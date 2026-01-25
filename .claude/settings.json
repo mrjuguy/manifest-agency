@@ -1,0 +1,43 @@
+{
+  "trust": {
+    "defaultLevel": 0,
+    "currentLevel": 0,
+    "ledgerPath": ".planning/trust-ledger.md"
+  },
+  "permissions": {
+    "allow": [
+      "Read",
+      "Glob",
+      "Grep",
+      "WebSearch",
+      "WebFetch",
+      "Bash(git status)",
+      "Bash(git log:*)",
+      "Bash(git diff:*)",
+      "Bash(ls:*)",
+      "Bash(tree:*)"
+    ],
+    "deny": [
+      "Bash(rm -rf:*)",
+      "Bash(git push --force:*)",
+      "Bash(git reset --hard:*)"
+    ]
+  },
+  "conventions": {
+    "claudeMdPath": "CLAUDE.md",
+    "planningDir": ".planning",
+    "commandsDir": ".claude/commands",
+    "skillsDir": ".claude/skills",
+    "agentsDir": ".claude/agents"
+  },
+  "workflow": {
+    "requireConfirmation": true,
+    "checkpointInterval": 5,
+    "autoSaveContext": true,
+    "verboseLogging": false
+  },
+  "projects": {
+    "rootDir": "projects",
+    "templateDir": "templates/new-project"
+  }
+}
