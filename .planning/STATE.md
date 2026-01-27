@@ -10,27 +10,27 @@ See: .planning/PROJECT.md (updated 2026-01-26)
 ## Current Position
 
 Phase: 1 of 7 (Foundation)
-Plan: 1 of 3 complete
+Plan: 2 of 3 complete
 Status: In progress
-Last activity: 2026-01-27 — Completed 01-02-PLAN.md (Agent Manifest Schema)
+Last activity: 2026-01-27 — Completed 01-01-PLAN.md (Repository Foundation)
 
-Progress: [███░░░░░░░] 33%
+Progress: [███████░░░] 67%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 1
+- Total plans completed: 2
 - Average duration: 2 min
-- Total execution time: 0.03 hours
+- Total execution time: 0.07 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 01-foundation | 1 | 2min | 2min |
+| 01-foundation | 2 | 4min | 2min |
 
 **Recent Trend:**
-- Last 5 plans: 01-02 (2min)
+- Last 5 plans: 01-01 (2min), 01-02 (2min)
 - Trend: Baseline
 
 *Updated after each plan completion*
@@ -47,6 +47,10 @@ Recent decisions affecting current work:
 - Declarative agent definitions (CEO invokes intent, agents encode implementation)
 - Dynamic worktrees (isolation without merge conflicts, outcome-based cleanup)
 - Agents as disposable resources (scale to work, not the other way around)
+
+**From 01-01 (Repository Foundation):**
+- Local git config for submodule behavior (not global)
+- LF line endings normalized across platform via .gitattributes
 
 **From 01-02 (Agent Manifest Schema):**
 - JSON Schema draft-07 for wide IDE compatibility
@@ -65,5 +69,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-01-27
-Stopped at: Completed 01-02-PLAN.md (Agent Manifest Schema)
+Stopped at: Completed 01-01-PLAN.md (Repository Foundation)
 Resume file: None
