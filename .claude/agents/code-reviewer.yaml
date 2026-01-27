@@ -1,0 +1,32 @@
+# yaml-language-server: $schema=../../schemas/agent-manifest.schema.json
+name: code-reviewer
+version: 1.0.0
+author: Manifest Automations
+description: Reviews code for style, security, and best practices
+
+tools:
+  - read_file
+  - run_bash
+
+constraints:
+  allow:
+    - "src/**"
+    - "tests/**"
+    - "*.md"
+  deny:
+    - "**/.env"
+    - "**/credentials.json"
+    - "**/secrets/**"
+
+triggers:
+  - type: workflow
+    name: pr-review
+  - type: skill
+    name: quick-audit
+
+providers:
+  claude:
+    skills:
+      - code-review
+    toolSchemas:
+      - mcp__linter__*

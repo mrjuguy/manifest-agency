@@ -1,0 +1,56 @@
+# yaml-language-server: $schema=../../schemas/agent-manifest.schema.json
+name: backend-developer
+version: 1.0.0
+author: Manifest Automations
+description: Implements backend services, APIs, and database schemas
+
+tools:
+  - read_file
+  - write_file
+  - run_bash
+  - glob
+  - grep
+
+dependencies:
+  - code-reviewer
+
+resources:
+  memory: 8GB
+  timeout: 3600
+
+execution:
+  workdir: "."
+  isolated: true
+
+routing:
+  priority: 50
+  tags:
+    - backend
+    - api
+    - database
+
+constraints:
+  allow:
+    - "src/**"
+    - "prisma/**"
+    - "tests/**"
+    - "*.json"
+    - "*.yaml"
+  deny:
+    - "**/.env*"
+    - "**/credentials*"
+    - "frontend/**"
+
+providers:
+  claude:
+    skills:
+      - backend-service
+      - database-migration
+    toolSchemas:
+      - mcp__prisma__*
+      - mcp__docker__*
+  gemini:
+    functionDeclarations:
+      - create_api_endpoint
+      - modify_schema
+    grounding: true
