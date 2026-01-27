@@ -1,0 +1,8 @@
+{
+  "command_timeout_seconds": 600,
+  "lock_staleness_threshold_seconds": 1800,
+  "github_api_retry_attempts": 3,
+  "github_api_retry_delay_seconds": 2,
+  "rate_limit_max_wait_seconds": 300,
+  "warning_threshold_percent": 80
+}
