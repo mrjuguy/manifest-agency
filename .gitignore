@@ -1,0 +1,6 @@
+# Cache directory - ignore contents but keep structure
+.cache/*
+!.cache/.gitkeep
+!.cache/github/
+.cache/github/*
+!.cache/github/.gitkeep
