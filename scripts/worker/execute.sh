@@ -294,7 +294,8 @@ parse_issue_body "$ISSUE_NUMBER"
 # Create worktree
 BRANCH_NAME="issue/${ISSUE_NUMBER}"
 REPO_NAME=$(basename "$REPO_ROOT")
-WORKTREE_PATH="$(dirname "$REPO_ROOT")/${REPO_NAME}-issue-${ISSUE_NUMBER}"
+# Match worktree-create.sh pattern: {repo}-{branch}
+WORKTREE_PATH="$(dirname "$REPO_ROOT")/${REPO_NAME}-${BRANCH_NAME}"
 
 echo "[worker] Creating worktree: $WORKTREE_PATH"
 "$SCRIPTS_DIR/worktree-create.sh" "$BRANCH_NAME" "main"
