@@ -546,16 +546,16 @@ The worker skill orchestrates the complete lifecycle of executing work from a Gi
 
 **Basic invocation:**
 ```bash
-claude --skill worker:execute --issue 42
+./scripts/worker/execute.sh --issue 42
 ```
 
 **With options:**
 ```bash
 # Override stale lock after crash
-claude --skill worker:execute --issue 42 --force
+./scripts/worker/execute.sh --issue 42 --force
 
 # Check execution status
-claude --skill worker:execute --issue 42 --status
+./scripts/worker/execute.sh --issue 42 --status
 ```
 
 ### Workflow
@@ -563,7 +563,7 @@ claude --skill worker:execute --issue 42 --status
 **First run (Planning Phase):**
 ```bash
 # User invokes worker
-claude --skill worker:execute --issue 42
+./scripts/worker/execute.sh --issue 42
 
 # Worker actions:
 # 1. Acquires lock
@@ -580,7 +580,7 @@ claude --skill worker:execute --issue 42
 **Second run (Execution Phase):**
 ```bash
 # User re-runs after approval
-claude --skill worker:execute --issue 42
+./scripts/worker/execute.sh --issue 42
 
 # Worker actions:
 # 1. Acquires lock
@@ -712,13 +712,13 @@ Worker configuration lives in `.worker/config.json`:
 **Stale lock detected:**
 ```bash
 # Check status first
-claude --skill worker:execute --issue 42 --status
+./scripts/worker/execute.sh --issue 42 --status
 
 # View log file for crash details
 tail .worker/logs/issue-42-*.jsonl | jq .
 
 # Override stale lock if safe
-claude --skill worker:execute --issue 42 --force
+./scripts/worker/execute.sh --issue 42 --force
 ```
 
 **Execution failed:**
@@ -749,7 +749,7 @@ cd ../manifest-automations-issue-42/
 git status
 
 # Resume or restart
-claude --skill worker:execute --issue 42
+./scripts/worker/execute.sh --issue 42
 ```
 
 ### Example Session
@@ -770,7 +770,7 @@ Add JWT-based authentication to the API.
 # Output: Created issue #42
 
 # 2. First worker run (planning)
-claude --skill worker:execute --issue 42
+./scripts/worker/execute.sh --issue 42
 
 # Output:
 # [worker] Starting execution for issue #42
@@ -783,12 +783,12 @@ claude --skill worker:execute --issue 42
 # Next steps:
 #   1. Review the execution plan in the issue comment
 #   2. React with thumbs up to approve
-#   3. Re-run: claude --skill worker:execute --issue 42
+#   3. Re-run: ./scripts/worker/execute.sh --issue 42
 
 # 3. Review plan in GitHub issue, add thumbs up reaction
 
 # 4. Second worker run (execution)
-claude --skill worker:execute --issue 42
+./scripts/worker/execute.sh --issue 42
 
 # Output:
 # [worker] Starting execution for issue #42
