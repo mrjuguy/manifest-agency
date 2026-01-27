@@ -31,10 +31,12 @@ Decimal phases appear between their surrounding integers in numeric order.
   2. Agent manifest schema (YAML) is defined with model, tools, triggers, constraints
   3. Directory structure exists with all required folders (.claude/, .planning/, projects/, templates/)
   4. Worktrees can be created automatically per task and cleaned up based on outcome
-**Plans**: TBD
+**Plans**: 3 plans in 2 waves
 
 Plans:
-- [ ] 01-01: TBD during plan-phase
+- [ ] 01-01-PLAN.md - Directory structure and git submodule configuration (FOUND-01, FOUND-03)
+- [ ] 01-02-PLAN.md - Agent manifest JSON Schema and example agents (FOUND-02)
+- [ ] 01-03-PLAN.md - Worktree automation scripts (FOUND-04)
 
 ### Phase 2: GitHub Coordination
 **Goal**: GitHub configured as authoritative coordination layer for all agent work
@@ -127,7 +129,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 0/TBD | Not started | - |
+| 1. Foundation | 0/3 | Planned | - |
 | 2. GitHub Coordination | 0/TBD | Not started | - |
 | 3. Single Worker | 0/TBD | Not started | - |
 | 4. Trust Guardrails | 0/TBD | Not started | - |
