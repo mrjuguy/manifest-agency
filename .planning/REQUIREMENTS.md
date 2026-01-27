@@ -31,10 +31,10 @@
 
 ### GitHub Coordination
 
-- [ ] **GH-01**: GitHub issues serve as work items (task assignment, status tracking, context storage)
-- [ ] **GH-02**: Pull requests represent completed work (code changes linked to issues)
-- [ ] **GH-03**: GitHub Projects provide kanban-style state visualization
-- [ ] **GH-04**: GitHub is single source of truth — no proprietary state management, all coordination via gh CLI
+- [x] **GH-01**: GitHub issues serve as work items (task assignment, status tracking, context storage)
+- [x] **GH-02**: Pull requests represent completed work (code changes linked to issues)
+- [x] **GH-03**: GitHub Projects provide kanban-style state visualization
+- [x] **GH-04**: GitHub is single source of truth — no proprietary state management, all coordination via gh CLI
 
 ### Trust & Guardrails
 
@@ -100,10 +100,10 @@
 | FOUND-02 | Phase 1 | Complete |
 | FOUND-03 | Phase 1 | Complete |
 | FOUND-04 | Phase 1 | Complete |
-| GH-01 | Phase 2 | Pending |
-| GH-02 | Phase 2 | Pending |
-| GH-03 | Phase 2 | Pending |
-| GH-04 | Phase 2 | Pending |
+| GH-01 | Phase 2 | Complete |
+| GH-02 | Phase 2 | Complete |
+| GH-03 | Phase 2 | Complete |
+| GH-04 | Phase 2 | Complete |
 | WORK-01 | Phase 3 | Pending |
 | WORK-02 | Phase 3 | Pending |
 | WORK-04 | Phase 3 | Pending |
