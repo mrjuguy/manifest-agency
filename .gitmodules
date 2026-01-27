@@ -1,0 +1,16 @@
+# Git Submodules Registry - Manifest Automations
+# ================================================
+# Projects are added as submodules under projects/
+# Use relative URLs for portability across GitHub/GitLab/self-hosted
+#
+# To add a new project:
+#   git submodule add ../project-name.git projects/project-name
+#   git config -f .gitmodules submodule.projects/project-name.branch main
+#
+# To clone with all submodules:
+#   git clone --recurse-submodules <url>
+#
+# To update all submodules:
+#   git submodule update --remote --merge
+#
+# See .planning/phases/01-foundation/01-RESEARCH.md for detailed patterns
