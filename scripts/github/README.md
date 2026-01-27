@@ -518,6 +518,316 @@ Issue | Title                    | Status | Priority | Phase   | Claimed By
 
 ---
 
+## Worker Skill
+
+The worker skill provides automated execution of GitHub issues in isolated worktrees with approval workflow and comprehensive observability.
+
+### Overview
+
+The worker skill orchestrates the complete lifecycle of executing work from a GitHub issue:
+
+1. **Parse** issue for Summary and Acceptance Criteria
+2. **Generate** execution plan and post to issue
+3. **Wait** for human approval (thumbs up reaction)
+4. **Create** isolated git worktree
+5. **Execute** the work (Claude implements based on issue content)
+6. **Commit** changes with proper message
+7. **Create** pull request with agent metadata
+8. **Update** issue status and labels
+
+**Key features:**
+- Label-based state machine (survives crashes)
+- Approval workflow (exit and resume pattern)
+- Structured JSON logging
+- Lock-based concurrency control
+- Comprehensive error handling
+
+### Usage
+
+**Basic invocation:**
+```bash
+claude --skill worker:execute --issue 42
+```
+
+**With options:**
+```bash
+# Override stale lock after crash
+claude --skill worker:execute --issue 42 --force
+
+# Check execution status
+claude --skill worker:execute --issue 42 --status
+```
+
+### Workflow
+
+**First run (Planning Phase):**
+```bash
+# User invokes worker
+claude --skill worker:execute --issue 42
+
+# Worker actions:
+# 1. Acquires lock
+# 2. Parses issue body (Summary, Acceptance Criteria)
+# 3. Adds "worker:planning" label
+# 4. Posts execution plan as comment
+# 5. Updates to "worker:awaiting-approval" label
+# 6. Exits cleanly (no waiting/polling)
+
+# User reviews plan in GitHub issue comment
+# User adds thumbs up reaction to approve
+```
+
+**Second run (Execution Phase):**
+```bash
+# User re-runs after approval
+claude --skill worker:execute --issue 42
+
+# Worker actions:
+# 1. Acquires lock
+# 2. Detects "worker:awaiting-approval" label
+# 3. Checks for thumbs up on plan comment
+# 4. Updates to "worker:executing" label
+# 5. Creates worktree: ../manifest-automations-issue-42/
+# 6. Executes work (Claude implements based on Summary/Acceptance)
+# 7. Stages all changes
+# 8. Creates single commit: "Resolves #42"
+# 9. Pushes branch: issue/42
+# 10. Creates PR with metadata
+# 11. Posts completion comment
+# 12. Updates to "worker:complete" label
+# 13. Releases lock
+```
+
+### State Machine
+
+The worker uses GitHub labels as the state machine, ensuring state survives process crashes:
+
+| Label | Description | Next States |
+|-------|-------------|-------------|
+| `worker:planning` | Analyzing issue, generating plan | awaiting-approval |
+| `worker:awaiting-approval` | Plan posted, waiting for approval | executing, failed |
+| `worker:executing` | Implementing the work | complete, partial, failed |
+| `worker:complete` | Work done, PR created | - |
+| `worker:partial` | Interrupted during execution | executing (resume) |
+| `worker:failed` | Execution error | executing (retry) |
+
+**State transitions:**
+```
+issue created
+    │
+    v (first run)
+┌─────────────┐
+│  planning   │ (parsing issue, generating plan)
+└──────┬──────┘
+       │ (posts plan comment)
+       v
+┌─────────────┐
+│  awaiting-  │ (exits, waits for human approval)
+│  approval   │
+└──────┬──────┘
+       │ (re-run after thumbs up)
+       v
+┌─────────────┐
+│  executing  │ (creates worktree, implements work)
+└──────┬──────┘
+       │ (creates PR)
+       v
+┌─────────────┐
+│  complete   │ (done)
+└─────────────┘
+
+Error states:
+├─ partial (interrupted, work may be incomplete)
+└─ failed (error occurred, see error comment)
+```
+
+### Issue Format
+
+Worker requires structured issue format with specific sections:
+
+```markdown
+## Summary
+
+Brief description of what needs to be implemented.
+
+## Acceptance Criteria
+
+- [ ] Criterion 1
+- [ ] Criterion 2
+- [ ] Criterion 3
+```
+
+**Required sections:**
+- `## Summary` - High-level description
+- `## Acceptance Criteria` - Checklist of requirements
+
+Missing sections will cause parse error with helpful comment.
+
+### Configuration
+
+Worker configuration lives in `.worker/config.json`:
+
+```json
+{
+  "command_timeout_seconds": 600,
+  "lock_staleness_threshold_seconds": 1800,
+  "github_api_retry_attempts": 3,
+  "github_api_retry_backoff_base": 2,
+  "github_api_max_rate_limit_wait_seconds": 300
+}
+```
+
+**Key settings:**
+- **command_timeout_seconds** (600): Max time for single command
+- **lock_staleness_threshold_seconds** (1800): When lock considered stale
+- **github_api_retry_attempts** (3): Number of retry attempts
+- **github_api_max_rate_limit_wait_seconds** (300): Max wait for rate limit
+
+### File Structure
+
+```
+.worker/
+├── config.json              # Worker configuration
+├── locks/                   # Lock directories (gitignored)
+│   └── issue-42.lock/
+│       └── metadata.json    # Lock metadata
+└── logs/                    # JSON event logs (gitignored)
+    └── issue-42-20260127-183045.jsonl
+
+.claude/skills/worker/
+├── execute.md               # Main worker skill
+├── lib/
+│   ├── logger.sh           # JSON event logging
+│   ├── lock.sh             # Lock management
+│   └── parser.sh           # Issue body parsing
+└── templates/
+    ├── plan-comment.md     # Plan comment template
+    ├── start-comment.md    # Start notification
+    ├── complete-comment.md # Completion comment
+    └── failure-comment.md  # Error comment
+```
+
+### Recovery Procedures
+
+**Stale lock detected:**
+```bash
+# Check status first
+claude --skill worker:execute --issue 42 --status
+
+# View log file for crash details
+tail .worker/logs/issue-42-*.jsonl | jq .
+
+# Override stale lock if safe
+claude --skill worker:execute --issue 42 --force
+```
+
+**Execution failed:**
+```bash
+# Worker posts failure comment with:
+# - Error phase
+# - Error message
+# - Full error details
+# - Log file path
+# - Recovery options
+
+# Recovery options:
+# 1. Fix issue, then re-run
+# 2. Post "retry" comment and re-run
+# 3. Post "skip" comment to skip failed step
+# 4. Post "commit-partial" to commit incomplete work
+# 5. Post "abort" to clean up and abandon
+```
+
+**Interrupted execution (partial state):**
+```bash
+# Worker adds "worker:partial" label
+# Work may be partially complete in worktree
+
+# Check worktree status
+git worktree list
+cd ../manifest-automations-issue-42/
+git status
+
+# Resume or restart
+claude --skill worker:execute --issue 42
+```
+
+### Example Session
+
+**Complete end-to-end example:**
+
+```bash
+# 1. Create issue in GitHub UI or via CLI
+gh issue create --title "[Feature] Add user authentication" --body "## Summary
+Add JWT-based authentication to the API.
+
+## Acceptance Criteria
+- [ ] JWT token generation endpoint
+- [ ] Token validation middleware
+- [ ] Refresh token rotation
+- [ ] Unit tests for auth module"
+
+# Output: Created issue #42
+
+# 2. First worker run (planning)
+claude --skill worker:execute --issue 42
+
+# Output:
+# [worker] Starting execution for issue #42
+# [worker] Parsing issue #42...
+# [worker] Issue: [Feature] Add user authentication
+# [worker] Generating execution plan...
+# [worker] Posting execution plan...
+# [worker] Plan posted to issue #42
+#
+# Next steps:
+#   1. Review the execution plan in the issue comment
+#   2. React with thumbs up to approve
+#   3. Re-run: claude --skill worker:execute --issue 42
+
+# 3. Review plan in GitHub issue, add thumbs up reaction
+
+# 4. Second worker run (execution)
+claude --skill worker:execute --issue 42
+
+# Output:
+# [worker] Starting execution for issue #42
+# [worker] Issue in awaiting-approval state - checking for approval...
+# [worker] Approval received - proceeding with execution
+# [worker] Starting execution...
+# [worker] Creating worktree: ../manifest-automations-issue-42
+# [worker] Working in: /path/to/../manifest-automations-issue-42
+# [worker] Execution complete - creating commit...
+# [worker] Pushing branch...
+# [worker] Creating PR...
+# [worker] Execution complete
+#   PR: https://github.com/user/repo/pull/123
+#   Duration: 3min
+
+# 5. PR automatically created, issue updated to "In Review"
+# 6. After PR merges, GitHub Actions updates issue to "Done"
+```
+
+### Integration with Scripts
+
+Worker skill delegates to existing scripts for specific operations:
+
+**Worktree management:**
+- `scripts/worktree-create.sh` - Creates isolated worktree
+- `scripts/worktree-remove.sh` - Cleans up after merge
+
+**GitHub operations:**
+- `scripts/github/pr-create.sh` - Creates PR with agent metadata
+- `scripts/github/issue-update-status.sh` - Updates project status
+- `scripts/github/issue-comment.sh` - Posts progress comments
+
+**Worker libraries:**
+- `.claude/skills/worker/lib/logger.sh` - Structured event logging
+- `.claude/skills/worker/lib/lock.sh` - Lock acquisition and staleness detection
+- `.claude/skills/worker/lib/parser.sh` - Issue body section extraction
+
+---
+
 ## Agent Workflows
 
 Common workflows for agents and orchestrators.
