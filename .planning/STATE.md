@@ -76,6 +76,12 @@ Recent decisions affecting current work:
 - Inline JSON construction with jq avoids external file dependencies
 - Idempotency pattern: check for resource existence before creation
 
+**From 02-03 (Issue Lifecycle Management):**
+- Issue number as positional argument (not --issue flag) for natural CLI usage
+- Progress metadata embedded in HTML comments for machine parsing without visual clutter
+- Blocker comments automatically add 'blocked' label for visibility
+- GraphQL project item lookup pattern: query repository issue projectItems
+
 **From 02-04 (PR Management and Project Queries):**
 - PR metadata captured in structured table (agent, duration, model, trust level)
 - Query script supports multiple output formats (json, table, list) for different consumers
@@ -92,6 +98,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-01-27T10:08:45Z
-Stopped at: Completed 02-04-PLAN.md (PR Management and Project Queries)
+Last session: 2026-01-27T14:58:32Z
+Stopped at: Completed 02-03-PLAN.md (Issue Lifecycle Management)
 Resume file: None
