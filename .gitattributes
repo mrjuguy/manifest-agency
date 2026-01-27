@@ -1,0 +1,18 @@
+# Manifest Automations - Git Attributes
+# Normalize line endings for cross-platform consistency
+* text=auto eol=lf
+
+# Keep shell scripts with LF even on Windows
+*.sh text eol=lf
+
+# Binary files
+*.png binary
+*.jpg binary
+*.ico binary
+
+# YAML files (agent manifests)
+*.yaml text eol=lf
+*.yml text eol=lf
+
+# JSON files
+*.json text eol=lf
