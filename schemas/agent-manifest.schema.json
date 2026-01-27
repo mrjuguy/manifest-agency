@@ -1,0 +1,118 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://manifest-automations.dev/schema/agent-manifest/v1.0.0",
+  "title": "Agent Manifest",
+  "description": "Declarative definition of an AI agent for Manifest Automations",
+  "type": "object",
+  "required": ["name", "version", "tools"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]$",
+      "description": "Agent identifier in kebab-case (e.g., code-reviewer)",
+      "minLength": 3,
+      "maxLength": 50
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Semantic version (e.g., 1.0.0)"
+    },
+    "author": {
+      "type": "string",
+      "description": "Author or team responsible for this agent"
+    },
+    "description": {
+      "type": "string",
+      "description": "What this agent does",
+      "maxLength": 500
+    },
+    "tools": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1,
+      "description": "Tools this agent can use (e.g., read_file, write_file, run_bash)"
+    },
+    "dependencies": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Other agents this agent depends on"
+    },
+    "resources": {
+      "type": "object",
+      "properties": {
+        "memory": { "type": "string", "description": "Memory requirement (e.g., 4GB)" },
+        "timeout": { "type": "integer", "description": "Max execution time in seconds" }
+      },
+      "description": "Resource requirements for execution"
+    },
+    "execution": {
+      "type": "object",
+      "properties": {
+        "workdir": { "type": "string", "description": "Working directory context" },
+        "isolated": { "type": "boolean", "description": "Run in isolated worktree" }
+      },
+      "description": "Execution context settings"
+    },
+    "routing": {
+      "type": "object",
+      "properties": {
+        "priority": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "tags": { "type": "array", "items": { "type": "string" } }
+      },
+      "description": "Hints for orchestrator routing"
+    },
+    "constraints": {
+      "type": "object",
+      "properties": {
+        "allow": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Glob patterns for allowed file access (e.g., src/**)"
+        },
+        "deny": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Glob patterns for denied file access (e.g., **/.env)"
+        }
+      },
+      "description": "File access constraints (allowlist + blocklist)"
+    },
+    "triggers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string", "enum": ["workflow", "skill", "event", "schedule"] },
+          "name": { "type": "string" },
+          "config": { "type": "object" }
+        },
+        "required": ["type", "name"]
+      },
+      "description": "Optional triggers for auto-invocation"
+    },
+    "providers": {
+      "type": "object",
+      "properties": {
+        "claude": {
+          "type": "object",
+          "properties": {
+            "skills": { "type": "array", "items": { "type": "string" } },
+            "toolSchemas": { "type": "array", "items": { "type": "string" } }
+          },
+          "description": "Claude-specific extensions"
+        },
+        "gemini": {
+          "type": "object",
+          "properties": {
+            "functionDeclarations": { "type": "array", "items": { "type": "string" } },
+            "grounding": { "type": "boolean" }
+          },
+          "description": "Gemini-specific extensions"
+        }
+      },
+      "description": "Provider-specific extensions"
+    }
+  },
+  "additionalProperties": false
+}
