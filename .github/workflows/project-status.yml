@@ -1,0 +1,91 @@
+name: Project Status Automation
+
+on:
+  pull_request:
+    types: [opened, ready_for_review, closed]
+
+jobs:
+  update-status:
+    runs-on: ubuntu-latest
+    # Run if PR is merged OR if it's opened/ready_for_review (not just closed without merge)
+    if: github.event.pull_request.merged == true || github.event.action != 'closed'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Extract issue number from PR body
+        id: issue
+        run: |
+          BODY="${{ github.event.pull_request.body }}"
+          # Extract issue number from "Closes #N" pattern
+          ISSUE_NUM=$(echo "$BODY" | grep -oP 'Closes #\K\d+' | head -1)
+
+          if [ -z "$ISSUE_NUM" ]; then
+            echo "⚠️ No linked issue found in PR body (expected 'Closes #N' pattern)"
+            echo "number=" >> $GITHUB_OUTPUT
+          else
+            echo "✓ Found linked issue: #$ISSUE_NUM"
+            echo "number=$ISSUE_NUM" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Update status to In Review (PR opened)
+        if: steps.issue.outputs.number != '' && (github.event.action == 'opened' || github.event.action == 'ready_for_review')
+        run: |
+          echo "Updating issue #${{ steps.issue.outputs.number }} to 'In Review'"
+          ./scripts/github/issue-update-status.sh ${{ steps.issue.outputs.number }} --status "In Review"
+        env:
+          GH_TOKEN: ${{ secrets.PROJECT_PAT }}
+
+      - name: Add PR opened comment
+        if: steps.issue.outputs.number != '' && (github.event.action == 'opened' || github.event.action == 'ready_for_review')
+        run: |
+          gh issue comment ${{ steps.issue.outputs.number }} \
+            --body "🔍 **PR opened for review:** #${{ github.event.pull_request.number }}"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update status to Done (PR merged)
+        if: steps.issue.outputs.number != '' && github.event.pull_request.merged == true
+        run: |
+          echo "Updating issue #${{ steps.issue.outputs.number }} to 'Done'"
+          ./scripts/github/issue-update-status.sh ${{ steps.issue.outputs.number }} --status Done
+        env:
+          GH_TOKEN: ${{ secrets.PROJECT_PAT }}
+
+      - name: Add completion comment (PR merged)
+        if: steps.issue.outputs.number != '' && github.event.pull_request.merged == true
+        run: |
+          gh issue comment ${{ steps.issue.outputs.number }} \
+            --body "✅ **Completed via PR #${{ github.event.pull_request.number }}**
+
+          This issue has been resolved and merged to main.
+
+          **Merged by:** @${{ github.event.pull_request.merged_by.login }}
+          **Completed at:** $(date -u +"%Y-%m-%d %H:%M:%S UTC")
+
+          The linked issue will be automatically closed by GitHub."
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Workflow summary
+        if: always()
+        run: |
+          echo "## Project Status Automation" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**PR:** #${{ github.event.pull_request.number }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Action:** ${{ github.event.action }}" >> $GITHUB_STEP_SUMMARY
+
+          if [ -n "${{ steps.issue.outputs.number }}" ]; then
+            echo "**Linked Issue:** #${{ steps.issue.outputs.number }}" >> $GITHUB_STEP_SUMMARY
+
+            if [ "${{ github.event.action }}" = "opened" ] || [ "${{ github.event.action }}" = "ready_for_review" ]; then
+              echo "**Status Update:** → In Review" >> $GITHUB_STEP_SUMMARY
+            elif [ "${{ github.event.pull_request.merged }}" = "true" ]; then
+              echo "**Status Update:** → Done" >> $GITHUB_STEP_SUMMARY
+              echo "**Result:** Issue will be closed automatically" >> $GITHUB_STEP_SUMMARY
+            fi
+          else
+            echo "**Linked Issue:** None found" >> $GITHUB_STEP_SUMMARY
+            echo "**Note:** Add 'Closes #N' to PR body to enable automation" >> $GITHUB_STEP_SUMMARY
+          fi
