@@ -4,3 +4,9 @@
 !.cache/github/
 .cache/github/*
 !.cache/github/.gitkeep
+
+# Worker runtime files (logs and locks are ephemeral)
+.worker/logs/*
+!.worker/logs/.gitkeep
+.worker/locks/*
+!.worker/locks/.gitkeep
