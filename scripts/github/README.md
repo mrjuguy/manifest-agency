@@ -214,10 +214,30 @@ After running `project-bootstrap.sh`:
    - Click "Manifest Automations"
    - Settings → Fields → Verify all 6 custom fields exist
 
-2. **Create Views** (currently manual - see issue tracker):
-   - "All Work" (Board): Group by Status, sort by Priority
-   - "Ready Queue" (Table): Filter Status=Ready, show Priority/Complexity/Agent Type
-   - "By Phase" (Table): Group by Phase, show Status/Priority
+2. **Create Views** (manual step - API limitation):
+
+   **Note:** GitHub Projects v2 API does not support view creation via GraphQL. Views must be created manually through the UI.
+
+   **Required views:**
+
+   a. **All Work** (Board View)
+      - Click '+' next to view tabs → New view → Board
+      - Group by: Status
+      - Sort by: Priority (drag P0 to top)
+      - Save as "All Work"
+
+   b. **Ready Queue** (Table View)
+      - Click '+' next to view tabs → New view → Table
+      - Add filter: Status = Ready
+      - Show columns: Title, Priority, Complexity, Agent Type
+      - Sort by: Priority (ascending)
+      - Save as "Ready Queue"
+
+   c. **By Phase** (Table View)
+      - Click '+' next to view tabs → New view → Table
+      - Group by: Phase
+      - Show columns: Title, Status, Priority, Claimed By
+      - Save as "By Phase"
 
 3. **Add Issues to Project**:
    ```bash

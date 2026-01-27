@@ -162,6 +162,7 @@ for FIELD_DEF in "${CUSTOM_FIELDS[@]}"; do
       IFS=',' read -ra OPTION_ARRAY <<< "$OPTIONS"
       OPTIONS_JSON=$(printf '%s\n' "${OPTION_ARRAY[@]}" | jq -R . | jq -s 'map({name: ., color: "GRAY"})')
 
+      # Use -F with := for JSON values (not -f which treats as string)
       CREATE_FIELD_RESULT=$(gh api graphql -f query='
         mutation($projectId: ID!, $name: String!, $dataType: ProjectV2CustomFieldType!, $options: [ProjectV2SingleSelectFieldOptionInput!]!) {
           createProjectV2Field(input: {
@@ -181,7 +182,7 @@ for FIELD_DEF in "${CUSTOM_FIELDS[@]}"; do
               }
             }
           }
-        }' -f projectId="$PROJECT_ID" -f name="$FIELD_NAME" -f dataType="$FIELD_TYPE" -f options="$OPTIONS_JSON")
+        }' -f projectId="$PROJECT_ID" -f name="$FIELD_NAME" -f dataType="$FIELD_TYPE" -F options:="$OPTIONS_JSON")
 
       NEW_FIELD_ID=$(echo "$CREATE_FIELD_RESULT" | jq -r '.data.createProjectV2Field.projectV2Field.id')
       echo -e "${GREEN}✓${NC} Created single select field: $FIELD_NAME"
@@ -245,4 +246,36 @@ done
 echo ""
 echo "Cache: $CACHE_FILE"
 echo ""
+
+# View creation instructions (not available via API)
+echo "=========================================="
+echo "Manual View Creation Required"
+echo "=========================================="
+echo ""
+echo "GitHub Projects v2 API does not support view creation via GraphQL."
+echo "Please create the following views manually in the project UI:"
+echo ""
+echo "1. All Work (Board View) - Default kanban"
+echo "   - Layout: Board"
+echo "   - Group by: Status"
+echo "   - Sort by: Priority (P0 first)"
+echo ""
+echo "2. Ready Queue (Table View) - Items ready for claiming"
+echo "   - Layout: Table"
+echo "   - Filter: Status is 'Ready'"
+echo "   - Columns: Title, Priority, Complexity, Agent Type"
+echo "   - Sort by: Priority"
+echo ""
+echo "3. By Phase (Table View) - Progress tracking"
+echo "   - Layout: Table"
+echo "   - Group by: Phase"
+echo "   - Columns: Title, Status, Priority, Claimed By"
+echo ""
+echo "To create views:"
+echo "1. Visit: https://github.com/users/$OWNER/projects/$PROJECT_NUMBER"
+echo "2. Click '+' next to view tabs"
+echo "3. Configure layout, filters, grouping, and sorting as above"
+echo ""
 echo -e "${GREEN}✓${NC} Project ready for agent coordination!"
+echo ""
+echo "Note: Views must be created manually through the GitHub UI."
