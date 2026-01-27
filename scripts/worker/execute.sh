@@ -147,11 +147,12 @@ if echo "$ISSUE_LABELS" | grep -q "worker:awaiting-approval"; then
   echo "[worker] Issue in awaiting-approval state - checking for approval..."
 
   # Check for thumbs up reaction on plan comment
-  PLAN_COMMENT_ID=$(gh api "/repos/{owner}/{repo}/issues/${ISSUE_NUMBER}/comments" \
+  # Note: No leading slash - Git Bash on Windows converts /repos to filesystem path
+  PLAN_COMMENT_ID=$(gh api "repos/{owner}/{repo}/issues/${ISSUE_NUMBER}/comments" \
     --jq '.[] | select(.body | contains("## Execution Plan")) | .id' 2>/dev/null | tail -1)
 
   if [ -n "$PLAN_COMMENT_ID" ]; then
-    APPROVAL_COUNT=$(gh api "/repos/{owner}/{repo}/issues/comments/${PLAN_COMMENT_ID}/reactions" \
+    APPROVAL_COUNT=$(gh api "repos/{owner}/{repo}/issues/comments/${PLAN_COMMENT_ID}/reactions" \
       --jq '[.[] | select(.content == "+1")] | length' 2>/dev/null || echo "0")
 
     if [ "$APPROVAL_COUNT" -gt 0 ]; then
