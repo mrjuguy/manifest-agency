@@ -96,31 +96,31 @@
 
 | REQ-ID | Phase | Status |
 |--------|-------|--------|
-| FOUND-01 | — | Pending |
-| FOUND-02 | — | Pending |
-| FOUND-03 | — | Pending |
-| FOUND-04 | — | Pending |
-| ORCH-01 | — | Pending |
-| ORCH-02 | — | Pending |
-| ORCH-03 | — | Pending |
-| ORCH-04 | — | Pending |
-| WORK-01 | — | Pending |
-| WORK-02 | — | Pending |
-| WORK-03 | — | Pending |
-| WORK-04 | — | Pending |
-| GH-01 | — | Pending |
-| GH-02 | — | Pending |
-| GH-03 | — | Pending |
-| GH-04 | — | Pending |
-| TRUST-01 | — | Pending |
-| TRUST-02 | — | Pending |
-| TRUST-03 | — | Pending |
-| OBS-01 | — | Pending |
-| OBS-02 | — | Pending |
-| CEO-01 | — | Pending |
-| CEO-02 | — | Pending |
-| CEO-03 | — | Pending |
-| CEO-04 | — | Pending |
+| FOUND-01 | Phase 1 | Pending |
+| FOUND-02 | Phase 1 | Pending |
+| FOUND-03 | Phase 1 | Pending |
+| FOUND-04 | Phase 1 | Pending |
+| GH-01 | Phase 2 | Pending |
+| GH-02 | Phase 2 | Pending |
+| GH-03 | Phase 2 | Pending |
+| GH-04 | Phase 2 | Pending |
+| WORK-01 | Phase 3 | Pending |
+| WORK-02 | Phase 3 | Pending |
+| WORK-04 | Phase 3 | Pending |
+| OBS-01 | Phase 3 | Pending |
+| OBS-02 | Phase 3 | Pending |
+| TRUST-01 | Phase 4 | Pending |
+| TRUST-02 | Phase 4 | Pending |
+| TRUST-03 | Phase 4 | Pending |
+| ORCH-01 | Phase 5 | Pending |
+| ORCH-02 | Phase 5 | Pending |
+| ORCH-03 | Phase 5 | Pending |
+| ORCH-04 | Phase 5 | Pending |
+| WORK-03 | Phase 6 | Pending |
+| CEO-01 | Phase 7 | Pending |
+| CEO-02 | Phase 7 | Pending |
+| CEO-03 | Phase 7 | Pending |
+| CEO-04 | Phase 7 | Pending |
 
 ---
 
