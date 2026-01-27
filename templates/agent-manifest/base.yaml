@@ -1,0 +1,64 @@
+# yaml-language-server: $schema=../../schemas/agent-manifest.schema.json
+# Agent Manifest Template
+# Copy this file to .claude/agents/<agent-name>.yaml and customize
+
+name: agent-name  # kebab-case, 3-50 chars (e.g., code-reviewer)
+version: 1.0.0
+author: Your Name
+description: What this agent does (max 500 chars)
+
+# Required: Tools this agent can use
+tools:
+  - read_file
+  - write_file
+  # - run_bash
+  # - glob
+  # - grep
+
+# Optional: Other agents this depends on
+# dependencies:
+#   - other-agent
+
+# Optional: Resource requirements
+# resources:
+#   memory: 4GB
+#   timeout: 1800
+
+# Optional: Execution context
+# execution:
+#   workdir: "."
+#   isolated: false
+
+# Optional: Routing hints for orchestrator
+# routing:
+#   priority: 50
+#   tags:
+#     - category
+
+# Recommended: File access constraints
+constraints:
+  allow:
+    - "src/**"
+    - "tests/**"
+  deny:
+    - "**/.env*"
+    - "**/secrets/**"
+
+# Optional: Auto-triggers (or invoke directly)
+# triggers:
+#   - type: workflow
+#     name: my-workflow
+#   - type: skill
+#     name: my-skill
+
+# Optional: Provider-specific extensions
+# providers:
+#   claude:
+#     skills:
+#       - skill-name
+#     toolSchemas:
+#       - mcp__server__*
+#   gemini:
+#     functionDeclarations:
+#       - function_name
+#     grounding: false
