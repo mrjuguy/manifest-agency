@@ -66,10 +66,13 @@ Plans:
   3. Worker operates in isolated git worktree without conflicts
   4. All worker actions logged in structured JSON format
   5. Worker failures captured with full context for debugging
-**Plans**: TBD
+**Plans**: 4 plans in 4 waves
 
 Plans:
-- [ ] 03-01: TBD during plan-phase
+- [ ] 03-01-PLAN.md - Worker infrastructure: .worker/ directory, config, gitignore (OBS-01)
+- [ ] 03-02-PLAN.md - Core libraries: logger.sh, lock.sh, parser.sh (OBS-01, OBS-02)
+- [ ] 03-03-PLAN.md - Worker execution skill with state machine and approval flow (WORK-01, WORK-02, WORK-04)
+- [ ] 03-04-PLAN.md - Comment templates, documentation, and end-to-end verification (WORK-02)
 
 ### Phase 4: Trust Guardrails
 **Goal**: Hook-based trust enforcement prevents destructive operations and maintains audit trail
@@ -135,7 +138,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7
 |-------|----------------|--------|-----------|
 | 1. Foundation | 3/3 | Complete | 2026-01-27 |
 | 2. GitHub Coordination | 5/5 | Complete | 2026-01-27 |
-| 3. Single Worker | 0/TBD | Not started | - |
+| 3. Single Worker | 0/4 | Planned | - |
 | 4. Trust Guardrails | 0/TBD | Not started | - |
 | 5. Orchestration | 0/TBD | Not started | - |
 | 6. Worker Parallelization | 0/TBD | Not started | - |
