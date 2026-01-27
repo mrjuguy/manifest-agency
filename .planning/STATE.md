@@ -10,27 +10,27 @@ See: .planning/PROJECT.md (updated 2026-01-26)
 ## Current Position
 
 Phase: 1 of 7 (Foundation)
-Plan: Ready to plan
-Status: Ready to plan
-Last activity: 2026-01-26 — Roadmap created with 7 phases
+Plan: 1 of 3 complete
+Status: In progress
+Last activity: 2026-01-27 — Completed 01-02-PLAN.md (Agent Manifest Schema)
 
-Progress: [░░░░░░░░░░] 0%
+Progress: [███░░░░░░░] 33%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 0
-- Average duration: - min
-- Total execution time: 0.0 hours
+- Total plans completed: 1
+- Average duration: 2 min
+- Total execution time: 0.03 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| - | - | - | - |
+| 01-foundation | 1 | 2min | 2min |
 
 **Recent Trend:**
-- Last 5 plans: None yet
+- Last 5 plans: 01-02 (2min)
 - Trend: Baseline
 
 *Updated after each plan completion*
@@ -48,6 +48,12 @@ Recent decisions affecting current work:
 - Dynamic worktrees (isolation without merge conflicts, outcome-based cleanup)
 - Agents as disposable resources (scale to work, not the other way around)
 
+**From 01-02 (Agent Manifest Schema):**
+- JSON Schema draft-07 for wide IDE compatibility
+- Strict validation (additionalProperties: false) to catch typos
+- Optional triggers for both direct invocation and auto-routing
+- Provider-specific extensions in providers.* namespace
+
 ### Pending Todos
 
 None yet.
@@ -58,6 +64,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-01-26
-Stopped at: Roadmap creation complete
+Last session: 2026-01-27
+Stopped at: Completed 01-02-PLAN.md (Agent Manifest Schema)
 Resume file: None
