@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-01-26)
 
 **Core value:** Complete loop where CEO dispatches intent, orchestrator routes, Claude executes, results land in GitHub with status reporting back.
-**Current focus:** Phase 3 - Single Worker
+**Current focus:** Phase 4 - Trust Guardrails
 
 ## Current Position
 
-Phase: 3 of 7 (Single Worker)
-Plan: 3 of 4
-Status: In progress
-Last activity: 2026-01-27 — Completed 03-03-PLAN.md (Worker Execution Skill)
+Phase: 4 of 7 (Trust Guardrails)
+Plan: Ready to plan
+Status: Ready to plan
+Last activity: 2026-01-27 — Phase 3 (Single Worker) complete and verified
 
-Progress: [████░░░░░░] 48%
+Progress: [█████░░░░░] 52%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 11
-- Average duration: 3 min
-- Total execution time: 0.57 hours
+- Total plans completed: 12
+- Average duration: 4 min
+- Total execution time: 0.83 hours
 
 **By Phase:**
 
@@ -29,11 +29,11 @@ Progress: [████░░░░░░] 48%
 |-------|-------|-------|----------|
 | 01-foundation | 3 | 6min | 2min |
 | 02-github-coordination | 5 | 20min | 4min |
-| 03-single-worker | 3 | 8min | 3min |
+| 03-single-worker | 4 | 24min | 6min |
 
 **Recent Trend:**
-- Last 5 plans: 02-04 (4min), 02-05 (10min), 03-01 (2min), 03-02 (4min), 03-03 (2min)
-- Trend: Implementation tasks run consistently fast (2-4min), documentation tasks longer (10min)
+- Last 5 plans: 02-05 (10min), 03-01 (2min), 03-02 (4min), 03-03 (2min), 03-04 (15min)
+- Trend: Documentation + debugging tasks take longer (03-04 included fixing --skill invocation pattern)
 
 *Updated after each plan completion*
 
@@ -115,6 +115,13 @@ Recent decisions affecting current work:
 - 6 worker states: planning, awaiting-approval, executing, complete, partial, failed
 - Exit-and-resume pattern for human approval gates (no polling/waiting)
 
+**From 03-04 (Comment Templates and Documentation):**
+- Standalone bash script for worker invocation (not slash command) - enables Phase 5 orchestrator dispatch
+- `scripts/worker/execute.sh --issue N` as primary entry point for human and programmatic invocation
+- Claude CLI invoked via `claude -p "prompt"` for AI implementation work within orchestration shell
+- gh api paths must omit leading slash on Windows (Git Bash converts /repos to filesystem path)
+- All scripts require explicit execute permissions in git (mode 100755) for GitHub Actions
+
 ### Pending Todos
 
 None yet.
@@ -125,6 +132,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-01-27T23:59:14Z
-Stopped at: Completed 03-03-PLAN.md (Worker Execution Skill)
+Last session: 2026-01-28T03:35:00Z
+Stopped at: Completed Phase 3 (Single Worker) - verified and ready for Phase 4
 Resume file: None
