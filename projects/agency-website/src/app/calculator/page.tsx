@@ -10,12 +10,22 @@ export default function Calculator() {
   const [hourlyRate, setHourlyRate] = useState(50);
   const [hoursPerWeek, setHoursPerWeek] = useState(10);
 
+  // State and logic defined below
+  const [email, setEmail] = useState("");
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
   const weeklyCost = analysts * hourlyRate * hoursPerWeek;
   const annualCost = weeklyCost * 52;
   const fiveYearCost = annualCost * 5;
-
-  // Assuming Manifest automation reduces this time by 80%
   const annualSavings = annualCost * 0.8;
+
+  const handleDetailedReport = (e: React.FormEvent) => {
+    e.preventDefault();
+    // In a real app, send to API/Zapier
+    console.log("Lead Captured:", email, { analysts, hourlyRate, hoursPerWeek, annualSavings });
+    setIsSubmitted(true);
+  };
+
 
   return (
     <div className="min-h-screen bg-white text-slate-900 font-sans">
@@ -115,12 +125,46 @@ export default function Calculator() {
                 <p className="text-sm text-blue-600/80 mb-6">
                   (Assuming 80% automation rate)
                 </p>
-                <Link 
-                  href="/book"
-                  className="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-semibold transition-colors"
-                >
-                  Stop Burning Cash
-                </Link>
+                
+                {/* Email Capture or CTA */}
+                {!isSubmitted ? (
+                    <form onSubmit={handleDetailedReport} className="space-y-4">
+                         <div>
+                            <label htmlFor="email" className="sr-only">Email address</label>
+                            <input
+                                id="email"
+                                name="email"
+                                type="email"
+                                autoComplete="email"
+                                required
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                className="w-full px-4 py-3 rounded-lg border border-blue-200 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+                                placeholder="Enter work email for full report"
+                            />
+                        </div>
+                        <button 
+                            type="submit"
+                            className="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-semibold transition-colors"
+                        >
+                            Get Detailed PDF Report
+                        </button>
+                        <p className="text-xs text-blue-600/60 text-center">
+                            Or <Link href="/book" className="underline hover:text-blue-800">book a call directly</Link>.
+                        </p>
+                    </form>
+                ) : (
+                    <div className="bg-green-100 border border-green-200 rounded-lg p-4 text-center">
+                        <div className="text-green-700 font-bold mb-1">Report Sent!</div>
+                        <p className="text-green-600 text-sm mb-4">Check your inbox for the breakdown.</p>
+                         <Link 
+                            href="/book"
+                            className="block w-full text-center bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg font-semibold transition-colors text-sm"
+                        >
+                            Schedule Review Call
+                        </Link>
+                    </div>
+                )}
               </div>
             </div>
           </div>
