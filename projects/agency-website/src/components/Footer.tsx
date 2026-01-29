@@ -24,6 +24,9 @@ export default function Footer() {
           <Link href="/privacy" className="hover:text-blue-600 mr-4">
             Privacy Policy
           </Link>
+          <Link href="/terms" className="hover:text-blue-600 mr-4">
+            Terms of Service
+          </Link>
           © 2026 Manifest Automations. All rights reserved.
         </div>
       </div>
