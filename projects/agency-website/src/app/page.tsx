@@ -168,6 +168,37 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Testimonials */}
+      <section className="py-20 bg-slate-900 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+              Trusted by Data-Driven Agencies.
+            </h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-slate-800 p-8 rounded-2xl border border-slate-700">
+              <div className="flex gap-1 text-yellow-400 mb-4">★★★★★</div>
+              <p className="text-slate-300 mb-6 italic">"We fired our expensive data entry VA and replaced them with Manifest's pipelines. The accuracy is 100% better and it runs 24/7."</p>
+              <div className="font-bold">Sarah Jenkins</div>
+              <div className="text-sm text-slate-500">CEO, GrowthHive</div>
+            </div>
+            <div className="bg-slate-800 p-8 rounded-2xl border border-slate-700">
+              <div className="flex gap-1 text-yellow-400 mb-4">★★★★★</div>
+              <p className="text-slate-300 mb-6 italic">"I used to spend every Monday morning copy-pasting CSVs. Now I just open my dashboard. It felt like magic."</p>
+              <div className="font-bold">Marcus Chen</div>
+              <div className="text-sm text-slate-500">Founder, ScaleUp Media</div>
+            </div>
+            <div className="bg-slate-800 p-8 rounded-2xl border border-slate-700">
+              <div className="flex gap-1 text-yellow-400 mb-4">★★★★★</div>
+              <p className="text-slate-300 mb-6 italic">"The ROI Calculator on their site wasn't lying. We saved about $40k/year in analyst hours within the first 3 months."</p>
+              <div className="font-bold">Elena Rodriguez</div>
+              <div className="text-sm text-slate-500">COO, AdVantage</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* The Solution */}
       <section id="solution" className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
