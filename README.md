@@ -25,10 +25,13 @@ Manifest Automations/
 │   ├── trust-ledger.md      # Trust score tracking
 │   └── active-projects.md   # Project registry
 ├── projects/                # All project submodules
+├── docs/                    # Strategy & Documentation
+│   ├── service-offerings.md # What we sell (Positioning)
+│   └── target-list.md       # Who we target (ICP)
 ├── templates/               # Project bootstrapping & Asset Library
 │   ├── contracts/           # SOWs and Legal Agreements
 │   ├── marketing/           # Case Studies & Positioning
-│   ├── outreach/            # Email Sequences
+│   ├── outreach/            # Email Sequences & Cold Templates
 │   ├── reporting/           # Weekly Status Reports
 │   ├── team/                # Wins Tracker & Culture
 │   ├── website/             # Copy & Landing Pages
@@ -50,6 +53,7 @@ We maintain a library of standardized assets to ensure consistency and speed.
 - **Competitor Analysis**: `competitor-analysis.md` (Positioning strategy)
 - **Case Study Template**: `case-study-template.md` (Problem/Solution/Result)
 - **Email Sequences**: `follow-up-sequences.md` (Sales follow-ups)
+- **Cold Outreach**: `cold-outreach-v1.md` (Initial contact templates)
 
 ### 📊 Operations (`templates/reporting/` & `templates/team/`)
 - **Weekly Report**: `weekly-report-template.md` (Status updates)
