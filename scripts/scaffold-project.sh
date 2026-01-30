@@ -12,61 +12,33 @@ if [ -z "$PROJECT_NAME" ] || [ -z "$SLUG" ]; then
 fi
 
 TARGET_DIR="projects/$SLUG"
+TEMPLATE_DIR="templates/new-project"
 
 if [ -d "$TARGET_DIR" ]; then
   echo "❌ Error: Project directory $TARGET_DIR already exists."
   exit 1
 fi
 
+if [ ! -d "$TEMPLATE_DIR" ]; then
+  echo "❌ Error: Template directory $TEMPLATE_DIR does not exist."
+  exit 1
+fi
+
 echo "🏗️  Scaffolding '$PROJECT_NAME' into $TARGET_DIR..."
 
-# 1. Copy Template
-# Assuming we have a base template. If not, we create the structure.
-mkdir -p "$TARGET_DIR/.planning"
+# 1. Copy Template Directory
+cp -r "$TEMPLATE_DIR" "$TARGET_DIR"
+
+# 2. Replace Variables in Files
+# macOS/BSD sed requires '' after -i, Linux does not. We'll use a temp file approach or basic sed.
+# Assuming Linux/Git Bash environment based on previous commands.
+
+find "$TARGET_DIR" -type f -exec sed -i "s/{{PROJECT_NAME}}/$PROJECT_NAME/g" {} +
+find "$TARGET_DIR" -type f -exec sed -i "s/{{DATE}}/$(date +%Y-%m-%d)/g" {} +
+
+# 3. Create Additional Directories (if not in template)
 mkdir -p "$TARGET_DIR/src"
 mkdir -p "$TARGET_DIR/docs"
-
-# 2. Create README
-cat <<EOF > "$TARGET_DIR/README.md"
-# $PROJECT_NAME
-
-**Client:** $PROJECT_NAME
-**Status:** Initialization
-**Trust Level:** 0 (Read-Only)
-
-## Overview
-[Description of the project]
-
-## Quick Start
-\`\`\`bash
-# Install dependencies
-npm install
-
-# Run dev server
-npm run dev
-\`\`\`
-EOF
-
-# 3. Create Planning Docs
-cat <<EOF > "$TARGET_DIR/.planning/BRIEF.md"
-# Project Brief: $PROJECT_NAME
-
-## Goals
-- [ ] Goal 1
-- [ ] Goal 2
-
-## Constraints
-- Tech Stack: [TBD]
-- Timeline: [TBD]
-EOF
-
-cat <<EOF > "$TARGET_DIR/.planning/trust-ledger.md"
-# Trust Ledger
-
-| Date | Level | Reason | Hash |
-|---|---|---|---|
-| $(date +%Y-%m-%d) | 0 | Project Initialization | N/A |
-EOF
 
 # 4. Copy Contract Templates
 if [ -f "templates/contracts/SOW-Discovery.md" ]; then
@@ -78,7 +50,8 @@ fi
 ACTIVE_REGISTRY=".planning/active-projects.md"
 if [ -f "$ACTIVE_REGISTRY" ]; then
   # Append table row
-  echo "| **$PROJECT_NAME** | $PROJECT_NAME | 🟢 Planning | Discovery Kickoff | $(date -d "+14 days" +%Y-%m-%d) | 0 |" >> "$ACTIVE_REGISTRY"
+  DATE_PLUS_14=$(date -d "+14 days" +%Y-%m-%d 2>/dev/null || date -v+14d +%Y-%m-%d) # Linux vs Mac compat
+  echo "| **$PROJECT_NAME** | $PROJECT_NAME | 🟢 Planning | Discovery Kickoff | $DATE_PLUS_14 | 0 |" >> "$ACTIVE_REGISTRY"
   echo "📝 Registered in $ACTIVE_REGISTRY"
 else
   echo "⚠️  Registry not found at $ACTIVE_REGISTRY"
