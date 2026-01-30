@@ -29,6 +29,11 @@ This is great for:
 
 **The Problem:** It doesn't scale. If you process 10,000 records, Zapier bills you a fortune. If the API changes, your business stops. You have "Spaghetti Automation"—a mess of connections nobody understands.
 
+**Is this you?**
+- You have 50+ Zaps running but don't know what half of them do.
+- When something breaks, only one person on the team knows how to fix it.
+- You pray the API limit doesn't hit on a client call.
+
 ## Stage 2: The "Scripting" Phase (Low-Code)
 
 **Tools:** Python scripts, Google Apps Script, Airtable Scripting, Cron jobs.
@@ -37,6 +42,11 @@ You hire a developer (or use ChatGPT) to write a script that runs every night. I
 It’s cheaper and more robust than Zapier.
 
 **The Problem:** Who maintains it? The developer left. The script is running on a laptop under a desk. There are no logs. If it fails, you find out when the client yells at you.
+
+**Is this you?**
+- You have scripts running on a local machine that must stay on 24/7.
+- You get weird errors in logs but ignore them because "it works mostly."
+- You dread updating the script because "it might break everything."
 
 ## Stage 3: The "Platform" Phase (Engineering)
 
@@ -48,6 +58,14 @@ This is how software companies operate. You treat your agency's operations as **
 - **Transformation:** Logic is defined in SQL (dbt), version-controlled in Git.
 - **Observability:** If a job fails, you get an alert immediately.
 
+## Why Dashboards Beat Static Reports
+
+In Stage 3, you stop sending PDFs. You give clients a live dashboard.
+- **Old Way:** "Here is last month's report (sent on the 5th)."
+- **New Way:** "Here is your live dashboard. It updates every hour."
+
+This builds trust. It shows you have nothing to hide. It makes you look like a tech company, not just a service provider.
+
 ## Moving Up the Ladder
 
 You don't need Stage 3 on Day 1. But you must know it exists.
@@ -55,3 +73,10 @@ If you are stuck in Stage 1, you are paying a "Manual Tax" on every new client. 
 
 At Manifest, we skip Stage 1 and 2. We deploy Stage 3 infrastructure for you, Day 1.
 Because you shouldn't have to build the machine to drive the car.
+
+---
+
+### Ready to Graduate?
+
+If you're tired of fixing broken Zaps, let's talk.
+[Book a Technical Audit](/book) or check out our [Live Demo](/demo) to see what Stage 3 looks like.

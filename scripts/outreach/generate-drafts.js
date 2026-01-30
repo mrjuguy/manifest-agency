@@ -89,7 +89,7 @@ function main() {
     
     console.log(`Found ${targets.length} targets.`);
 
-    targets.slice(0, 5).forEach(target => {
+    targets.forEach(target => {
         let emailBody = bodyTemplate;
         const firstName = target.founder.split(' ')[0];
         
