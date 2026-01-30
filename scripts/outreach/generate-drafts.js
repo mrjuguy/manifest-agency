@@ -1,9 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 
-const ROOT_DIR = path.resolve(__dirname, '../../..');
-const TARGET_LIST_PATH = path.join(ROOT_DIR, 'TARGET_LIST.md');
-const TEMPLATES_PATH = path.join(ROOT_DIR, 'EMAIL_TEMPLATES.md');
+// Move from scripts/outreach -> scripts -> repo_root
+const REPO_ROOT = path.resolve(__dirname, '../..');
+const TARGET_LIST_PATH = path.join(REPO_ROOT, 'docs', 'target-list.md');
+const TEMPLATES_PATH = path.join(REPO_ROOT, 'templates', 'outreach', 'cold-outreach-v1.md');
 const OUTPUT_DIR = path.join(__dirname, 'drafts');
 
 if (!fs.existsSync(OUTPUT_DIR)) {
