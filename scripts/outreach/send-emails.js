@@ -94,8 +94,12 @@ async function main() {
             }
         }
         
-        // Add a small delay to avoid rate limits
-        if (!DRY_RUN) await new Promise(resolve => setTimeout(resolve, 1000));
+        // Add a random delay to avoid rate limits (5-15 seconds)
+        if (!DRY_RUN) {
+            const delay = Math.floor(Math.random() * 10000) + 5000;
+            console.log(`   ⏳ Waiting ${delay/1000}s...`);
+            await new Promise(resolve => setTimeout(resolve, delay));
+        }
     }
 }
 
