@@ -2,21 +2,32 @@
 
 # Configuration
 # Set these as secrets in GitHub: DISCORD_WEBHOOK_URL
-REPO_NAME=${GITHUB_REPOSITORY}
+REPO_NAME="${GITHUB_REPOSITORY:-manifestautomations/manifest-agency}"
 
 echo "📢 Generating Weekly Digest for $REPO_NAME..."
 
+# Check dependencies
+if ! command -v gh &> /dev/null; then
+    echo "❌ Error: GitHub CLI (gh) is not installed."
+    exit 1
+fi
+
+# Check authentication
+if ! gh auth status &> /dev/null; then
+    echo "⚠️  Warning: GitHub CLI not authenticated. Attempting to run anyway (might fail)..."
+fi
+
 # Get Open Issues
-ISSUES=$(gh issue list --limit 5 --json number,title,author,url --template \
+ISSUES=$(gh issue list --repo "$REPO_NAME" --limit 5 --json number,title,author,url --template \
   '{{range .}}- [{{.title}}]({{.url}}) (@{{.author.login}})\n{{end}}')
 
 # Get Open PRs
-PRS=$(gh pr list --limit 5 --json number,title,author,url --template \
+PRS=$(gh pr list --repo "$REPO_NAME" --limit 5 --json number,title,author,url --template \
   '{{range .}}- [{{.title}}]({{.url}}) (@{{.author.login}})\n{{end}}')
 
 # Count totals
-ISSUE_COUNT=$(gh issue list --state open --limit 1000 | wc -l)
-PR_COUNT=$(gh pr list --state open --limit 1000 | wc -l)
+ISSUE_COUNT=$(gh issue list --repo "$REPO_NAME" --state open --limit 1000 | wc -l)
+PR_COUNT=$(gh pr list --repo "$REPO_NAME" --state open --limit 1000 | wc -l)
 
 # Prepare JSON payload
 # Note: Using a simple structure for Discord
