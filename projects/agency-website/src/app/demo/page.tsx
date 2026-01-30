@@ -37,12 +37,14 @@ export default function Demo() {
                     <p className="text-slate-500 text-sm mt-1">Last synced: 2 minutes ago via <span className="font-mono text-blue-600">pipeline-acme-prod</span></p>
                 </div>
                 <div className="flex gap-2">
+                    {/* TODO: Connect to Supabase Storage for CSV export */}
                     <button className="bg-white border border-slate-200 text-slate-600 px-3 py-2 rounded-lg text-sm font-medium hover:bg-slate-50">Last 30 Days</button>
                     <button className="bg-white border border-slate-200 text-slate-600 px-3 py-2 rounded-lg text-sm font-medium hover:bg-slate-50">Export CSV</button>
                 </div>
             </div>
 
             {/* KPI Cards */}
+            {/* Data Source: calculated from `formatted_campaigns` view in BigQuery/Supabase */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
                 <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
                     <div className="text-slate-500 text-sm font-medium mb-2">Total Spend</div>
@@ -145,6 +147,11 @@ export default function Demo() {
             </div>
 
             {/* Data Table */}
+            {/* 
+                Implementation Note:
+                In production, this table is hydrated by a Supabase Realtime subscription 
+                to the `kpi_daily_summary` materialized view.
+            */}
             <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
                 <div className="px-6 py-4 border-b border-slate-200 bg-slate-50 flex justify-between items-center">
                     <h3 className="font-bold text-slate-900">Campaign Performance</h3>
