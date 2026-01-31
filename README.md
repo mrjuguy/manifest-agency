@@ -25,6 +25,9 @@ Manifest Automations/
 │   ├── trust-ledger.md      # Trust score tracking
 │   └── active-projects.md   # Project registry
 ├── projects/                # All project submodules
+├── workflows/               # Lobster automation workflows 🦞
+│   ├── client_onboarding.lobster
+│   └── outreach_sender.lobster
 ├── docs/                    # Strategy & Documentation
 │   ├── service-offerings.md # What we sell (Positioning)
 │   └── target-list.md       # Who we target (ICP)
