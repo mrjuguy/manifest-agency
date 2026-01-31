@@ -1,8 +1,9 @@
-# Manifest Automations - Website Copy v1.0
+# Manifest Automations - Website Copy v1.1
 
 **Target Audience:** B2B Service Companies (Healthcare, Finance, Marketing)
-**Goal:** Book a Discovery Call
+**Goal:** Book a Discovery Call OR Capture Lead
 **Tone:** Professional, direct, results-oriented. Less "fluff", more "engineering".
+**Optimizations:** 2026 High-Conversion Standards (Video, Short Form, Long Copy)
 
 ---
 
@@ -14,15 +15,27 @@
 **Subheadline:**
 We build automated data pipelines that ingest, clean, and report your client data instantly. Scale your agency without scaling your headcount.
 
+**Visual:**
+*[VIDEO PLACEHOLDER: 60s looping demo of a CSV turning into a Dashboard automatically]*
+
 **Primary CTA:**
 [Book a Technical Audit]
 
 **Secondary CTA:**
-[See How It Works]
+[See the Demo]
 
 ---
 
-## 2. The Problem (The "Pain")
+## 2. Social Proof (Trust Bar)
+
+**Text:**
+Trusted by forward-thinking agencies scaling to $10M+
+
+*[LOGO STRIP: Placeholder Logos]*
+
+---
+
+## 3. The Problem (The "Pain")
 
 **Headline:**
 **Is Your Growth Bottlenecked by Spreadsheets?**
@@ -37,7 +50,7 @@ You signed the client. You have the strategy. But your team is drowning in data 
 
 ---
 
-## 3. The Solution
+## 4. The Solution
 
 **Headline:**
 **Automated Data Infrastructure for High-Growth Agencies.**
@@ -55,7 +68,7 @@ Feed DOMO, Tableau, or PowerBI directly. Your dashboards update in near real-tim
 
 ---
 
-## 4. How It Works
+## 5. How It Works
 
 **Headline:**
 **From Chaos to Code in 8 Weeks.**
@@ -66,7 +79,7 @@ Feed DOMO, Tableau, or PowerBI directly. Your dashboards update in near real-tim
 
 ---
 
-## 5. Pricing Models
+## 6. Pricing Models
 
 **Headline:**
 **Pay for Results, Not Hours.**
@@ -89,7 +102,7 @@ We offer two ways to engage, depending on your maturity.
 
 ---
 
-## 6. Who We Are
+## 7. Who We Are
 
 **Manifest Automations** is an engineering-first agency founded by developers who understand business.
 
@@ -102,7 +115,34 @@ We believe that human beings should do creative, strategic work. Robots should m
 
 ---
 
-## 7. Footer / CTA
+## 8. FAQ (Objection Handling)
+
+**Q: Do we need to fire our analysts?**
+A: No. We free them from "janitor work" so they can do actual analysis and strategy.
+
+**Q: Is it secure?**
+A: Yes. We use enterprise-grade encryption and own no data. Your data stays in your cloud (AWS/Azure/GCP).
+
+**Q: What if the API changes?**
+A: That's why we build resilient pipelines with error handling. Plus, our retainer covers maintenance.
+
+---
+
+## 9. Lead Capture (High Conversion)
+
+**Headline:**
+**Get the "Automation ROI Calculator"**
+See exactly how much margin you're losing to manual work.
+
+**Form:**
+*   [Name]
+*   [Work Email]
+*   [Agency Website]
+*   **[Send Me The Calculator]**
+
+---
+
+## 10. Footer / Final CTA
 
 **Headline:**
 **Ready to Automate Your Operations?**
