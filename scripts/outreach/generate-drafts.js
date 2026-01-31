@@ -96,15 +96,13 @@ function main() {
         
         emailBody = emailBody.replace(/\[FIRST NAME\]/g, firstName);
         emailBody = emailBody.replace(/\[AGENCY NAME\]/g, target.agency);
+        emailBody = emailBody.replace(/\[PERSONALIZATION_HOOK\]/g, target.hook);
         emailBody = emailBody.replace(/\[CALENDLY LINK\]/g, 'https://calendly.com/manifest-automations/30min'); // Hardcoded based on doc
-        
-        // Add Personalization Hook
-        const personalization = `(Hook: ${target.hook})`;
         
         const filename = `${target.agency.replace(/\s+/g, '_')}_draft.txt`;
         const filepath = path.join(OUTPUT_DIR, filename);
         
-        const fullContent = `To: ${target.email}\nSubject: Quick question about ${target.agency}'s reporting\n\n${emailBody}\n\n---\nInternal Note: ${personalization}`;
+        const fullContent = `To: ${target.email}\nSubject: Quick question about ${target.agency}'s reporting\n\n${emailBody}`;
         
         fs.writeFileSync(filepath, fullContent);
         console.log(`Generated draft: ${filepath}`);

@@ -3,6 +3,8 @@ Subject: Quick question about B2Linked's reporting
 
 Hi AJ,
 
+Managed 5 of LinkedIn's top 10 accounts, $150M+ ad spend. Hosts podcast.
+
 I noticed B2Linked manages campaigns across multiple platforms for your clients.
 
 Quick question: How much time does your team spend each week pulling data from Google Ads, Meta, and GA4 into spreadsheets before they can actually analyze it?
@@ -22,6 +24,3 @@ Manifest Automations
 P.S. — We just helped a 25-person agency cut their reporting time by 70%. Happy to share what we did.
 
 ---
-
----
-Internal Note: (Hook: Managed 5 of LinkedIn's top 10 accounts, $150M+ ad spend. Hosts podcast.)

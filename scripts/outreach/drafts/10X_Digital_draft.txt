@@ -3,6 +3,8 @@ Subject: Quick question about 10X Digital's reporting
 
 Hi Holly,
 
+Read your MarketerInterview on the future of Programmatic.
+
 I noticed 10X Digital manages campaigns across multiple platforms for your clients.
 
 Quick question: How much time does your team spend each week pulling data from Google Ads, Meta, and GA4 into spreadsheets before they can actually analyze it?
@@ -22,6 +24,3 @@ Manifest Automations
 P.S. — We just helped a 25-person agency cut their reporting time by 70%. Happy to share what we did.
 
 ---
-
----
-Internal Note: (Hook: Read your MarketerInterview on the future of Programmatic.)

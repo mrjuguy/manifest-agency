@@ -13,6 +13,8 @@
 
 Hi [FIRST NAME],
 
+[PERSONALIZATION_HOOK]
+
 I noticed [AGENCY NAME] manages campaigns across multiple platforms for your clients.
 
 Quick question: How much time does your team spend each week pulling data from Google Ads, Meta, and GA4 into spreadsheets before they can actually analyze it?
