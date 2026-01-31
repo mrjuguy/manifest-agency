@@ -1,9 +1,9 @@
-To: holly@10xdigitalinc.com
-Subject: Quick question about 10X Digital's reporting
+To: tellef@accelerateddigitalmedia.com
+Subject: Quick question about Accelerated Digital's reporting
 
-Hi Holly,
+Hi Tellef,
 
-I noticed 10X Digital manages campaigns across multiple platforms for your clients.
+I noticed Accelerated Digital manages campaigns across multiple platforms for your clients.
 
 Quick question: How much time does your team spend each week pulling data from Google Ads, Meta, and GA4 into spreadsheets before they can actually analyze it?
 
@@ -24,4 +24,4 @@ P.S. — We just helped a 25-person agency cut their reporting time by 70%. Happ
 ---
 
 ---
-Internal Note: (Hook: Read your MarketerInterview on the future of Programmatic.)
+Internal Note: (Hook: Follow your work on Forbes Agency Council.)

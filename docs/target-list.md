@@ -19,11 +19,11 @@
 | 3 | **Impactable** | Justin Rowe | justin.r@impactable.com | [LinkedIn](https://linkedin.com/in/justin-rowe-4043339b) | Scaled 0→7-figures, acquired, 1000+ clients in 30 countries. Very active poster. |
 | 4 | **PBJ Marketing** | Phillip Reinhardt | phillip@pbjmarketing.com (likely) | [LinkedIn](https://linkedin.com/company/pbjmarketing) | DC-based, $3M revenue, works with nonprofits/advocacy. 104 Clutch reviews. |
 | 5 | **Comrade Digital Marketing** | Ivan Vislavskiy | ivan@comradeweb.com (likely) | [LinkedIn](https://linkedin.com/in/ivan-vislavskiy-53bb559/) | Chicago/Miami/Austin, $14M revenue, 11-50 employees. Award-winning. |
-| 6 | **10X Digital** | TBD | info@10xdigitalinc.com (general) | [LinkedIn](https://linkedin.com/company/10xdigitalinc) | 22+ years, global reach. Need to find specific founder. |
-| 7 | **PCG Digital** | Glenn Pasch | glenn@pcgcompanies.com (likely) | [LinkedIn](https://linkedin.com/in/glennpasch/) | CEO, automotive focus, founded by Brian Pasch. Speaks at conferences. |
-| 8 | **Savvy Marketing Services** | Kelly Fitzgerald | TBD (small, hard to find) | TBD | Niche: marketing for therapists. Mentioned reporting pain. |
-| 9 | **Rock Salt Marketing** | Ridge Anderson + Scott Cragun | contact@rocksaltmarketing.com (general) | [Team Page](https://rocksaltmarketing.com/our-team/) | Co-founders, 2023 startup, SLC. SEO + Paid Media focus. |
-| 10 | **Accelerated Digital Media** | Tellef Lundevall | tellef@accelerateddigitalmedia.com (likely) | [Forbes Council](https://councils.forbes.com/profile/Tellef-Lundevall-CEO-Founder-Accelerated-Digital-Media/801a006f-711b-4fc8-86bb-7a292905054e) | Ex-Google, founded 2017, Chicago. Forbes Agency Council member. |
+| 6 | **10X Digital** | Holly Rollins | holly@10xdigitalinc.com | [LinkedIn](https://linkedin.com/in/hollyrollins/) | Read your MarketerInterview on the future of Programmatic. |
+| 7 | **PCG Digital** | Glenn Pasch | glenn@pcgcompanies.com | [LinkedIn](https://linkedin.com/in/glennpasch/) | Huge fan of your "You're in Charge" podcast. |
+| 8 | **Savvy Marketing** | Kelly Fitzgerald | kelly@savvymarketing.services | [LinkedIn](https://linkedin.com/in/ikellyfitz/) | Heard your "Productive Therapist" interview about data-driven growth. |
+| 9 | **Rock Salt** | Ridge Anderson | ridge@rocksaltmarketing.com | [LinkedIn](https://linkedin.com/in/ridgeanderson/) | Saw the launch of your AI SEO services - right up my alley. |
+| 10 | **Accelerated Digital** | Tellef Lundevall | tellef@accelerateddigitalmedia.com | [LinkedIn](https://linkedin.com/in/tellef-lundevall-ceo-of-adm/) | Follow your work on Forbes Agency Council. |
 
 ### Ready to Email (Top 5)
 1. ✅ Maurice Rahmey @ Disruptive Digital

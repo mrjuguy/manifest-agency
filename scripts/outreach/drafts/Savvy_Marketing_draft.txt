@@ -1,9 +1,9 @@
-To: holly@10xdigitalinc.com
-Subject: Quick question about 10X Digital's reporting
+To: kelly@savvymarketing.services
+Subject: Quick question about Savvy Marketing's reporting
 
-Hi Holly,
+Hi Kelly,
 
-I noticed 10X Digital manages campaigns across multiple platforms for your clients.
+I noticed Savvy Marketing manages campaigns across multiple platforms for your clients.
 
 Quick question: How much time does your team spend each week pulling data from Google Ads, Meta, and GA4 into spreadsheets before they can actually analyze it?
 
@@ -24,4 +24,4 @@ P.S. — We just helped a 25-person agency cut their reporting time by 70%. Happ
 ---
 
 ---
-Internal Note: (Hook: Read your MarketerInterview on the future of Programmatic.)
+Internal Note: (Hook: Heard your "Productive Therapist" interview about data-driven growth.)
