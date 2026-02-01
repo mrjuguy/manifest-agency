@@ -44,14 +44,26 @@ We categorize agent capabilities by their level of autonomy and risk.
   - **Tool**: `scripts/outreach/send-emails.js` + LLM personalization.
   - **Action**: "Find 10 leads and draft personalized intros."
 
+### 6. **Growth & Sales Automation (Level 2)**
+- **Trigger**: "Sales Triage"
+- **Output**: Enriched leads, personalized outreach drafts, CRM updates.
+- **Tools**: `octolens` (Listening), `apollo` (Enrichment), `sales-triage.lobster` (Orchestration).
+- **Status**: Live in PR #5.
+
+### 7. **Programmatic SEO (Level 2)**
+- **Trigger**: Build Time (Next.js)
+- **Output**: Thousands of targeted landing pages (`/services/dental/chicago`).
+- **Tools**: Next.js Dynamic Routes, `pseo-data.json`, Static Site Generation (SSG).
+- **Status**: Live in PR #5.
+
 ---
 
 ## 🛠️ Toolbelt
 
-- **Lobster**: Deterministic workflow engine (`workflows/*.json`) for Standard Operating Procedures (SOPs).
+- **Lobster**: Deterministic workflow engine (`workflows/*.lobster`) for Standard Operating Procedures (SOPs).
 - **Agent Zero**: Dockerized autonomous environment for complex, multi-step problem solving.
-- **Moltbot Skills**: Modular capabilities (e.g., `github`, `marketing-mode`) loaded on demand.
+- **Moltbot Skills**: Modular capabilities (e.g., `github`, `marketing-mode`, `recruitment-automation`) loaded on demand.
 
 ---
 
-*Last updated: 2026-01-30*
+*Last updated: 2026-02-01*
