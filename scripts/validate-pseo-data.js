@@ -34,6 +34,17 @@ function validate() {
       if (!ind.solution) errors.push(`${context} missing "solution".`);
       if (!ind.value_prop) errors.push(`${context} missing "value_prop".`);
       
+      // Validate Stats (New for GEO)
+      if (!ind.stats || !Array.isArray(ind.stats)) {
+        errors.push(`${context} missing "stats" array (Required for GEO).`);
+      } else {
+        ind.stats.forEach((stat, s) => {
+            if (!stat.label) errors.push(`${context}.stats[${s}] missing "label".`);
+            if (!stat.value) errors.push(`${context}.stats[${s}] missing "value".`);
+            if (!stat.source) errors.push(`${context}.stats[${s}] missing "source".`);
+        });
+      }
+
       if (industrySlugs.has(ind.slug)) {
         errors.push(`${context} duplicate slug: "${ind.slug}".`);
       }
@@ -69,6 +80,7 @@ function validate() {
     console.log(`   Industries: ${data.industries.length}`);
     console.log(`   Locations:  ${data.locations.length}`);
     console.log(`   Total Pages: ${permutationCount}`);
+    console.log(`   GEO Ready:   Yes (Stats present)`);
   }
 }
 
