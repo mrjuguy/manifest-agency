@@ -314,6 +314,25 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Lead Magnet / ROI Calculator Teaser */}
+      <section className="py-20 bg-blue-600">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl mb-6">
+            Get the "Automation ROI Calculator"
+          </h2>
+          <p className="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
+            See exactly how much margin you're losing to manual work. 
+            Our free tool calculates your potential savings in seconds.
+          </p>
+          <Link 
+            href="/calculator"
+            className="inline-block bg-white text-blue-600 px-8 py-4 rounded-lg text-lg font-bold hover:bg-blue-50 transition-all shadow-xl"
+          >
+            Calculate Your Savings
+          </Link>
+        </div>
+      </section>
+
       <Footer />
     </div>
   );
