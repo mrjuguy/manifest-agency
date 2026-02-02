@@ -19,11 +19,32 @@ export default function Calculator() {
   const fiveYearCost = annualCost * 5;
   const annualSavings = annualCost * 0.8;
 
-  const handleDetailedReport = (e: React.FormEvent) => {
+  const handleDetailedReport = async (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real app, send to API/Zapier
-    console.log("Lead Captured:", email, { analysts, hourlyRate, hoursPerWeek, annualSavings });
-    setIsSubmitted(true);
+    try {
+      const response = await fetch("/api/leads", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          analysts,
+          hourlyRate,
+          hoursPerWeek,
+          annualSavings,
+        }),
+      });
+
+      if (!response.ok) {
+        console.error("Failed to submit lead", response.status, response.statusText);
+      }
+    } catch (error) {
+      console.error("Error submitting lead", error);
+    } finally {
+      console.log("Lead Captured:", email, { analysts, hourlyRate, hoursPerWeek, annualSavings });
+      setIsSubmitted(true);
+    }
   };
 
 
