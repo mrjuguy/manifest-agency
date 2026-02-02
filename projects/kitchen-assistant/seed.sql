@@ -24,6 +24,7 @@ insert into public.items (barcode, name, brand, category, default_unit, image_ur
 ('0201', 'Olive Oil (Extra Virgin)', 'Generic', 'Pantry', 'ml', 'https://example.com/oliveoil.png'),
 ('0202', 'Pasta (Spaghetti)', 'Barilla', 'Pantry', 'g', 'https://example.com/pasta.png'),
 ('0203', 'Rice (Basmati)', 'Generic', 'Pantry', 'kg', 'https://example.com/rice.png'),
+-- Note: 'Rao''s' is the brand "Rao's" with the single quote escaped per SQL string literal rules.
 ('0204', 'Tomato Sauce', 'Rao''s', 'Pantry', 'g', 'https://example.com/sauce.png'),
 ('0205', 'Black Beans (Canned)', 'Goya', 'Pantry', 'can', 'https://example.com/beans.png'),
 
