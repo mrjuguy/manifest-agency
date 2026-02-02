@@ -1,8 +1,11 @@
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { getSortedCaseStudies } from "@/lib/case-studies";
 
 export default function Home() {
+  const caseStudies = getSortedCaseStudies();
+
   return (
     <div className="min-h-screen bg-white text-slate-900 font-sans">
       <Navbar />
@@ -99,71 +102,34 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-12">
-            {/* Case Study 1 */}
-            <div className="bg-slate-50 rounded-2xl p-8 border border-slate-200">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-2xl">
-                  📈
+            {caseStudies.map((study) => (
+              <Link href={`/case-studies/${study.slug}`} key={study.slug} className="block group">
+                <div className="bg-slate-50 rounded-2xl p-8 border border-slate-200 group-hover:border-blue-500 transition-colors h-full">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-2xl">
+                      {study.industry === 'Dental' ? '🦷' : study.industry === 'E-Commerce' ? '🛒' : '📈'}
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-slate-900 text-lg group-hover:text-blue-600 transition-colors">{study.title}</h3>
+                      <p className="text-sm text-slate-500">{study.client}</p>
+                    </div>
+                  </div>
+                  <div className="space-y-4 mb-8">
+                    <div>
+                      <h4 className="font-semibold text-slate-900 text-sm uppercase tracking-wide">Results</h4>
+                      <ul className="text-slate-600 mt-1 list-disc pl-4 space-y-1">
+                        {study.results.map((r, i) => (
+                          <li key={i}>{r}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="bg-white rounded-xl p-4 border border-slate-100 shadow-sm flex items-center justify-between">
+                    <span className="text-blue-600 font-semibold text-sm">Read Case Study &rarr;</span>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-bold text-slate-900 text-lg">Performance Agency (25 Employees)</h3>
-                  <p className="text-sm text-slate-500">New York, NY</p>
-                </div>
-              </div>
-              <div className="space-y-4 mb-8">
-                <div>
-                  <h4 className="font-semibold text-slate-900 text-sm uppercase tracking-wide">The Pain</h4>
-                  <p className="text-slate-600 mt-1">Analysts spending 15 hours/week copying data from Meta/Google to Excel. Monthly reporting took 4 days.</p>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-slate-900 text-sm uppercase tracking-wide">The Fix</h4>
-                  <p className="text-slate-600 mt-1">Built a custom Airbyte → BigQuery → Looker Studio pipeline. Zero manual intervention.</p>
-                </div>
-              </div>
-              <div className="bg-white rounded-xl p-4 border border-slate-100 shadow-sm flex items-center justify-between">
-                <div>
-                  <div className="text-sm text-slate-500">Time Saved</div>
-                  <div className="text-2xl font-bold text-green-600">70% reduction</div>
-                </div>
-                <div className="text-right">
-                  <div className="text-sm text-slate-500">ROI</div>
-                  <div className="text-2xl font-bold text-green-600">10x</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Case Study 2 */}
-            <div className="bg-slate-50 rounded-2xl p-8 border border-slate-200">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center text-2xl">
-                  🛒
-                </div>
-                <div>
-                  <h3 className="font-bold text-slate-900 text-lg">E-Commerce Aggregator</h3>
-                  <p className="text-sm text-slate-500">Austin, TX</p>
-                </div>
-              </div>
-              <div className="space-y-4 mb-8">
-                <div>
-                  <h4 className="font-semibold text-slate-900 text-sm uppercase tracking-wide">The Pain</h4>
-                  <p className="text-slate-600 mt-1">Client data in 4 currencies and 3 languages. "Global View" dashboard was manually updated daily.</p>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-slate-900 text-sm uppercase tracking-wide">The Fix</h4>
-                  <p className="text-slate-600 mt-1">Deployed a dbt normalization layer that standardizes currency and language in real-time.</p>
-                </div>
-              </div>
-              <div className="bg-white rounded-xl p-4 border border-slate-100 shadow-sm flex items-center justify-between">
-                <div>
-                  <div className="text-sm text-slate-500">Data Lag</div>
-                  <div className="text-2xl font-bold text-green-600">24h → 5m</div>
-                </div>
-                <div className="text-right">
-                  <div className="text-sm text-slate-500">Errors</div>
-                  <div className="text-2xl font-bold text-green-600">0%</div>
-                </div>
-              </div>
-            </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
