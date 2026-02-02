@@ -2,9 +2,11 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { getSortedCaseStudies } from "@/lib/case-studies";
+import { getSortedTestimonials } from "@/lib/testimonials";
 
 export default function Home() {
   const caseStudies = getSortedCaseStudies();
+  const testimonials = getSortedTestimonials();
 
   return (
     <div className="min-h-screen bg-white text-slate-900 font-sans">
@@ -143,24 +145,18 @@ export default function Home() {
             </h2>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-slate-800 p-8 rounded-2xl border border-slate-700">
-              <div className="flex gap-1 text-yellow-400 mb-4">★★★★★</div>
-              <p className="text-slate-300 mb-6 italic">"We fired our expensive data entry VA and replaced them with Manifest's pipelines. The accuracy is 100% better and it runs 24/7."</p>
-              <div className="font-bold">Sarah Jenkins</div>
-              <div className="text-sm text-slate-500">CEO, GrowthHive</div>
-            </div>
-            <div className="bg-slate-800 p-8 rounded-2xl border border-slate-700">
-              <div className="flex gap-1 text-yellow-400 mb-4">★★★★★</div>
-              <p className="text-slate-300 mb-6 italic">"I used to spend every Monday morning copy-pasting CSVs. Now I just open my dashboard. It felt like magic."</p>
-              <div className="font-bold">Marcus Chen</div>
-              <div className="text-sm text-slate-500">Founder, ScaleUp Media</div>
-            </div>
-            <div className="bg-slate-800 p-8 rounded-2xl border border-slate-700">
-              <div className="flex gap-1 text-yellow-400 mb-4">★★★★★</div>
-              <p className="text-slate-300 mb-6 italic">"The ROI Calculator on their site wasn't lying. We saved about $40k/year in analyst hours within the first 3 months."</p>
-              <div className="font-bold">Elena Rodriguez</div>
-              <div className="text-sm text-slate-500">COO, AdVantage</div>
-            </div>
+            {testimonials.map((t) => (
+              <div key={t.slug} className="bg-slate-800 p-8 rounded-2xl border border-slate-700">
+                <div className="flex gap-1 text-yellow-400 mb-4">
+                  {[...Array(t.rating)].map((_, i) => (
+                    <span key={i}>★</span>
+                  ))}
+                </div>
+                <p className="text-slate-300 mb-6 italic">"{t.quote}"</p>
+                <div className="font-bold">{t.name}</div>
+                <div className="text-sm text-slate-500">{t.role}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
