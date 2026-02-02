@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Manifest Agency Website (MVP)
 
-## Getting Started
+The public face of Manifest Agency, built with Next.js 16 and Tailwind CSS.
 
-First, run the development server:
+## Features
+
+- **Dynamic Blog:** Markdown-based blog engine (`content/blog/*.md`).
+- **Dynamic Case Studies:** Markdown-based case studies (`content/case-studies/*.md`).
+- **pSEO Engine:** Generates thousands of landing pages from `content/pseo-data.json`.
+- **Lead Capture:** Integrated with Leadsie and Octolens via Webhooks.
+- **Voice AI Demo:** Vapi.ai integration demo page.
+
+## Content Management
+
+### Adding a Blog Post
+1. Create a new markdown file in `../../content/blog/`.
+2. Add frontmatter:
+   ```yaml
+   ---
+   title: "My New Post"
+   date: "2026-02-04"
+   author: "Tyler Smith"
+   slug: "my-new-post"
+   description: "Short SEO description."
+   ---
+   ```
+3. Commit and push.
+
+### Adding a Case Study
+1. Create a new markdown file in `../../content/case-studies/`.
+2. Add frontmatter:
+   ```yaml
+   ---
+   title: "Saved 20 Hours/Week"
+   client: "Acme Corp"
+   industry: "Dental"
+   service: "Voice AI"
+   results:
+     - "0% Missed Calls"
+     - "$15k Revenue"
+   slug: "acme-corp"
+   ---
+   ```
+
+### Updating pSEO Pages
+1. Edit `../../content/pseo-data.json`.
+2. Add new `industries` or `locations`.
+3. The site automatically generates `services/[industry]/[location]` pages at build time.
+
+## Development
 
 ```bash
+cd projects/agency-website
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Deployment
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Deploys automatically to Vercel on push to `main`.
+Environment variables required:
+- `OCTOLENS_WEBHOOK_SECRET`
+- `VAPI_WEBHOOK_SECRET`
