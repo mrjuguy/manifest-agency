@@ -45,8 +45,8 @@
 **Focus:** Local Services (Lawyers, Plumbers)
 **The Pain:** "Lead Quality Disputes"
 **The Pitch:**
-> "Ivan, local clients fight you on 'Lead Quality'. We automate the matching of CallRail recordings to ServiceTitan booked jobs. You can show them exactly how much revenue you generated, down to the penny."
-**The Product:** CallRail <-> Field Service CRM Matcher.
+> "Ivan, local clients fight you on 'Lead Quality'. We deploy a **Voice AI Receptionist** that answers every call, qualifies the lead, and injects the recording directly into ServiceTitan. No more 'bad leads'—just booked jobs."
+**The Product:** Voice AI Receptionist (Vapi.ai).
 
 ---
 
@@ -54,17 +54,17 @@
 **Focus:** Student Housing / Real Estate
 **The Pain:** "Leasing Attribution"
 **The Pitch:**
-> "Holly, the gap between Programmatic Ad Spend and 'Signed Leases' in Yardi is where you lose credit. We bridge that gap with an automated 'Occupancy Attribution' agent."
-**The Product:** Ad Spend vs. Occupancy Rate Dashboard.
+> "Holly, missed calls = lost leases. We deploy a **24/7 Leasing Agent (Voice AI)** that can answer pricing questions, schedule tours, and sync with Yardi instantly. Capture the 30% of calls your teams miss."
+**The Product:** Voice AI Leasing Agent.
 
 ---
 
 ## 7. PCG Digital (Glenn Pasch)
 **Focus:** Automotive Dealerships
-**The Pain:** "VIN-Level ROI"
+**The Pain:** "Service Department Revenue"
 **The Pitch:**
-> "Glenn, dealers care about moving metal. We build the 'VIN Matcher' that connects Google Ad clicks to specific sold VINs in the DMS (CDK/Reynolds). Prove Gross Profit, not just clicks."
-**The Product:** VIN-Level Attribution Agent.
+> "Glenn, your Service BDC is overwhelmed. We deploy a **Service Scheduler Agent** that answers overflow calls, looks up VINs in the DMS, and books appointments. It turns missed calls into ROs (Repair Orders)."
+**The Product:** Voice AI Service Scheduler.
 
 ---
 
@@ -72,8 +72,8 @@
 **Focus:** Therapists (Private Practice)
 **The Pain:** "Caseload Anxiety"
 **The Pitch:**
-> "Kelly, therapists don't understand SEO reports. They understand 'Booked Intakes'. We connect your SEO wins directly to their EHR (SimplePractice) so they see '3 New Patients' instead of 'Traffic Up 10%'."
-**The Product:** SEO -> EHR Intake Dashboard.
+> "Kelly, therapists are in session and can't answer the phone. We deploy a HIPAA-compliant **Intake Agent** that screens new patients, checks insurance (basic), and books the intake session."
+**The Product:** HIPAA-Compliant Voice Intake Agent.
 
 ---
 

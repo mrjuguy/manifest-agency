@@ -34,6 +34,22 @@ The Growth Stack is a set of automated workflows designed to generate leads, onb
     4.  **Next.js** checks Calendar API for availability.
     5.  **Vapi** speaks response via ElevenLabs.
 
+## V2: Autonomous Agents (Planned)
+
+### 4. Recruiter Squad (Vapi + DeepSeek R1)
+*   **Goal:** Screen candidates autonomously.
+*   **Flow:**
+    1.  **Orchestrator (R1):** Analyzes JD and sets strategy.
+    2.  **Screener (Vapi Agent):** Conducts Level 1 phone screen.
+    3.  **Warm Transfer:** Hands off to Human if "Tier A" match detected.
+
+### 5. Research Agent (LangGraph)
+*   **Goal:** Deep dives on prospect companies.
+*   **Flow:**
+    1.  **Browser Tool:** Scrapes prospect's website/LinkedIn.
+    2.  **GraphRAG:** Stores "Key Decision Makers" and "Pain Points" in Knowledge Graph.
+    3.  **Output:** Enriched Brief for the Sales Team.
+
 ## Security
 *   All webhooks are protected by signature verification (HMAC SHA256) or Secret Tokens.
 *   API Routes run on Next.js Edge (where possible) for low latency.

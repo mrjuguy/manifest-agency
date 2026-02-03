@@ -8,7 +8,7 @@ We categorize agent capabilities by their level of autonomy and risk.
 |:---|:---|:---|:---|:---|
 | **Level 1** | **The Intern** | **Draft Mode** | Lobster (Deterministic) | Scaffolding, Formatted Reports, Linting |
 | **Level 2** | **The Junior** | **Co-Pilot** | LLM + Tool Use | Code Review, Unit Tests, Content Drafts |
-| **Level 3** | **The Partner** | **Autopilot** | Agent Zero (Autonomous) | Complex Research, "Fix this Bug", "Optimize Ads" |
+| **Level 3** | **The Partner** | **Autopilot** | Agent Orchestrator (R1/LangGraph) | Complex Research, "Fix this Bug", "Optimize Ads" |
 
 ---
 
@@ -40,9 +40,10 @@ We categorize agent capabilities by their level of autonomy and risk.
 - **Ads Manager**:
   - **Tool**: Google Ads MCP / Meta Ads MCP.
   - **Action**: "Analyze last week's ROAS and pause losing keywords."
-- **Outreach Specialist**:
-  - **Tool**: `scripts/outreach/send-emails.js` + LLM personalization.
-  - **Action**: "Find 10 leads and draft personalized intros."
+- **Recruiter (Agent A)**:
+  - **Engine**: DeepSeek R1 (Planner) + Vapi.ai (Caller).
+  - **Action**: "Screen 50 candidates and book 5 qualified intro calls."
+  - **Memory**: GraphRAG (Knowledge Graph) for candidate-company relationships.
 
 ### 6. **Growth & Sales Automation (Level 2)**
 - **Trigger**: "Sales Triage"
@@ -58,12 +59,14 @@ We categorize agent capabilities by their level of autonomy and risk.
 
 ---
 
-## 🛠️ Toolbelt
+## 🛠️ Toolbelt (2026 Stack)
 
 - **Lobster**: Deterministic workflow engine (`workflows/*.lobster`) for Standard Operating Procedures (SOPs).
-- **Agent Zero**: Dockerized autonomous environment for complex, multi-step problem solving.
-- **Moltbot Skills**: Modular capabilities (e.g., `github`, `marketing-mode`, `recruitment-automation`) loaded on demand.
+- **LangGraph**: Supervisor pattern for multi-agent orchestration (Planner -> Router -> Worker).
+- **DeepSeek R1**: "Reasoning" model for complex planning and strategy (Level 3 tasks).
+- **Vapi.ai**: Voice infrastructure for Squads and Warm Transfers.
+- **GraphRAG**: Neo4j/FalkorDB integration for "Relational Memory" (replacing flat files).
 
 ---
 
-*Last updated: 2026-02-01*
+*Last updated: 2026-02-05*
