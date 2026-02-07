@@ -77,7 +77,9 @@ function main() {
     const targetContent = fs.readFileSync(TARGET_LIST_PATH, 'utf8');
     const templateContent = fs.readFileSync(TEMPLATES_PATH, 'utf8');
 
-    const targets = parseMarkdownTable(targetContent, 'Tier 1: High Priority');
+    const targetsTier1 = parseMarkdownTable(targetContent, 'Tier 1: High Priority');
+    const targetsTier2 = parseMarkdownTable(targetContent, 'Tier 2: Dental Vertical');
+    const targets = [...targetsTier1, ...targetsTier2];
     const templateRaw = getTemplate(templateContent, 'Template 1: The "Missed Call" Angle (High Intent)');
 
     // Extract body and subject from template
