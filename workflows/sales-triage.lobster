@@ -13,13 +13,13 @@ steps:
   # 2. Enrich the lead using Apollo (simulated call)
   # In production: clawd tool call apollo enrich --domain $fetch_leads.domain
   - id: enrich_lead
-    command: echo "Enriching lead..." # Placeholder for actual tool call
+    command: node scripts/sales/enrich-leads.js
     stdin: ${{ fetch_leads.stdout }}
 
   # 3. Generate Draft (LLM Step)
   # Uses the enrichment data to write a personalized message
   - id: generate_draft
-    command: clawd agent --task "Write a cold DM to ${{ enrich_lead.stdout.name }} mentioning their post about ${{ fetch_leads.stdout.topic }}."
+    command: clawd agent --task "Write a cold DM to ${{ enrich_lead.stdout[0].name }} mentioning their post about ${{ fetch_leads.stdout[0].topic }} and referencing their use of ${{ enrich_lead.stdout[0].technographics[0] }}."
 
   # 4. Human Approval Gate
   # STOP here and wait for Tyler/Rich to say "yes"
