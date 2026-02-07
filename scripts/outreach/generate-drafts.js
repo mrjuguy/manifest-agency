@@ -90,6 +90,11 @@ function main() {
     const bodyStart = templateRaw.indexOf('**Body:**');
     let bodyTemplate = templateRaw.substring(bodyStart + 9).trim();
     
+    // Remove trailing markdown separator '---' if captured
+    if (bodyTemplate.endsWith('---')) {
+        bodyTemplate = bodyTemplate.substring(0, bodyTemplate.lastIndexOf('---')).trim();
+    }
+    
     // Clean up "Hi [FIRST NAME]," -> "Hi [FIRST NAME],"
     
     console.log(`Found ${targets.length} targets.`);
