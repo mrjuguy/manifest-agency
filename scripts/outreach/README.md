@@ -35,7 +35,7 @@ This folder contains scripts to automate cold outreach to prospective agency cli
 ## Workflow
 
 ### 1. Generate Drafts
-Reads from `docs/target-list.md` and `templates/outreach/cold-outreach-v1.md` to create personalized text files.
+Reads from `docs/target-list.md` and `templates/outreach/cold-outreach-voice.md` to create personalized text files.
 
 ```bash
 node generate-drafts.js
