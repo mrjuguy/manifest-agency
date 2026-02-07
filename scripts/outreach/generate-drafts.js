@@ -4,7 +4,7 @@ const path = require('path');
 // Move from scripts/outreach -> scripts -> repo_root
 const REPO_ROOT = path.resolve(__dirname, '../..');
 const TARGET_LIST_PATH = path.join(REPO_ROOT, 'docs', 'target-list.md');
-const TEMPLATES_PATH = path.join(REPO_ROOT, 'templates', 'outreach', 'cold-outreach-v1.md');
+const TEMPLATES_PATH = path.join(REPO_ROOT, 'templates', 'outreach', 'cold-outreach-voice.md');
 const OUTPUT_DIR = path.join(__dirname, 'drafts');
 
 if (!fs.existsSync(OUTPUT_DIR)) {
@@ -78,7 +78,7 @@ function main() {
     const templateContent = fs.readFileSync(TEMPLATES_PATH, 'utf8');
 
     const targets = parseMarkdownTable(targetContent, 'Tier 1: High Priority');
-    const templateRaw = getTemplate(templateContent, 'Template 1: First Touch');
+    const templateRaw = getTemplate(templateContent, 'Template 1: The "Missed Call" Angle (High Intent)');
 
     // Extract body and subject from template
     // Template format in markdown has **Subject lines...** and **Body:**
@@ -102,7 +102,7 @@ function main() {
         const filename = `${target.agency.replace(/\s+/g, '_')}_draft.txt`;
         const filepath = path.join(OUTPUT_DIR, filename);
         
-        const fullContent = `To: ${target.email}\nSubject: Quick question about ${target.agency}'s reporting\n\n${emailBody}`;
+        const fullContent = `To: ${target.email}\nSubject: Voice AI for ${target.agency}'s clients\n\n${emailBody}`;
         
         fs.writeFileSync(filepath, fullContent);
         console.log(`Generated draft: ${filepath}`);

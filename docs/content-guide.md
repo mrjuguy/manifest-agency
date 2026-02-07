@@ -80,14 +80,14 @@ This JSON file drives the generation of thousands of landing pages (e.g., `/ai-a
 ### Adding an Industry
 ```json
 {
-  "slug": "roofing",
-  "name": "Roofing Companies",
-  "pain_point": "missed storm damage leads",
-  "solution": "24/7 Storm Response AI",
-  "value_prop": "Capture every hail claim instantly.",
+  "slug": "recruiting",
+  "name": "Recruiting Firms",
+  "pain_point": "screening 1000s of resumes",
+  "solution": "AI Candidate Screener",
+  "value_prop": "Interview every applicant in 5 minutes.",
   "stats": [
-    { "label": "Missed Calls", "value": "40%", "source": "Internal Data" },
-    { "label": "Lead Value", "value": "$2k", "source": "Industry Avg" },
+    { "label": "Time per Resume", "value": "6s", "source": "Ladders" },
+    { "label": "Placement Fee", "value": "20%", "source": "Industry Avg" },
     { "label": "Response Time", "value": "Instant", "source": "Manifest AI" }
   ]
 }
@@ -95,6 +95,6 @@ This JSON file drives the generation of thousands of landing pages (e.g., `/ai-a
 
 ### Adding a Location
 ```json
-{ "slug": "nashville", "name": "Nashville", "state": "TN" }
+{ "slug": "austin", "name": "Austin", "state": "TX" }
 ```
 *Note: Adding 1 industry with 50 locations creates 50 new pages instantly.*
