@@ -61,4 +61,4 @@ We will build a "Listening -> Enrichment -> Outreach" pipeline that runs 24/7.
 
 ## Future Upgrades (Level 3)
 - **Auto-Send:** Remove human approval for high-confidence matches.
-- **Voice Agent:** Retell AI calls leads who fill out forms within 30 seconds.
+- **Voice Agent:** Vapi.ai calls leads who fill out forms within 30 seconds.
