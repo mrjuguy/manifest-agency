@@ -13,11 +13,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Manifest Agency | Automated Data Infrastructure",
-  description: "We build automated data pipelines that ingest, clean, and report your client data instantly. Scale your agency without scaling your headcount.",
+  title: "Manifest Agency | AI Staffing & Growth Infrastructure",
+  description: "We deploy autonomous AI Recruiters, SDRs, and Receptionists that speak, sell, and work 24/7. Scale your agency without scaling your headcount.",
   openGraph: {
-    title: "Manifest Agency | Automated Data Infrastructure",
-    description: "Stop hiring analysts to do robot work. We automate your data stack.",
+    title: "Manifest Agency | AI Staffing & Growth Infrastructure",
+    description: "Stop hiring humans for robot work. We automate your workforce.",
     url: "https://manifest.agency",
     siteName: "Manifest Agency",
     locale: "en_US",
@@ -25,8 +25,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Manifest Agency | Automated Data Infrastructure",
-    description: "Stop hiring analysts to do robot work. We automate your data stack.",
+    title: "Manifest Agency | AI Staffing & Growth Infrastructure",
+    description: "Stop hiring humans for robot work. We automate your workforce.",
   },
 };
 
