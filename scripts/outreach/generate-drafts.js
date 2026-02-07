@@ -79,7 +79,8 @@ function main() {
 
     const targetsTier1 = parseMarkdownTable(targetContent, 'Tier 1: High Priority');
     const targetsTier2 = parseMarkdownTable(targetContent, 'Tier 2: Dental Vertical');
-    const targets = [...targetsTier1, ...targetsTier2];
+    const targetsTier3 = parseMarkdownTable(targetContent, 'Tier 3: Recruiting Vertical');
+    const targets = [...targetsTier1, ...targetsTier2, ...targetsTier3];
     const templateRaw = getTemplate(templateContent, 'Template 1: The "Missed Call" Angle (High Intent)');
 
     // Extract body and subject from template

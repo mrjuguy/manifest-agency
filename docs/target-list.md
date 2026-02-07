@@ -46,7 +46,19 @@
 
 ---
 
-## Tier 3: Secondary Targets
+## Tier 3: Recruiting Vertical (AI Staffing Pitch)
+
+| # | Agency | Location | Founder/CEO | Focus | Notes |
+|---|--------|----------|-------------|-------|-------|
+| 16 | **Rocket** | US | TBD | High-Growth Tech | "4 in 5 get interviews" -> Automate the first round. |
+| 17 | **Riviera Partners** | US | Will Hunsinger | Engineering Execs | High-end. Pitch "DeepSeek R1" for executive screening. |
+| 18 | **RecWorks** | UK/Remote | Barry Cranford | Java Developers | Pitch "AI Technical Interviewer" for Java. |
+| 19 | **Betts Recruiting** | US | Carolyn Betts | GTM / Sales | Pitch "AI SDR" to recruit SDRs. |
+| 20 | **Motion Recruitment** | US | TBD | IT Staffing | High volume. Pitch "Resume Screening Agent" to cut costs. |
+
+---
+
+## Tier 4: Secondary Targets
 
 | # | Agency | Location | Size | Focus | Notes |
 |---|--------|----------|------|-------|-------|
