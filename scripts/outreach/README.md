@@ -45,6 +45,12 @@ node generate-drafts.js
 ### 2. Review Drafts
 Check the `drafts/` folder. You can manually edit any text file to personalize it further. The sender script uses the content of these files exactly as they are.
 
+**Quick Preview:**
+To see a summary table of all generated drafts:
+```bash
+node preview-drafts.js
+```
+
 ### 3. Send Emails
 Reads all files in `drafts/`, parses them, and sends them via SMTP.
 
