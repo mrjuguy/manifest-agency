@@ -7,9 +7,10 @@ const TARGET_LIST_PATH = path.join(REPO_ROOT, 'docs', 'target-list.md');
 const TEMPLATES_PATH = path.join(REPO_ROOT, 'templates', 'outreach', 'cold-outreach-voice.md');
 const OUTPUT_DIR = path.join(__dirname, 'drafts');
 
-if (!fs.existsSync(OUTPUT_DIR)) {
-    fs.mkdirSync(OUTPUT_DIR);
+if (fs.existsSync(OUTPUT_DIR)) {
+    fs.rmSync(OUTPUT_DIR, { recursive: true, force: true });
 }
+fs.mkdirSync(OUTPUT_DIR);
 
 function parseMarkdownTable(markdown, sectionHeader) {
     const lines = markdown.split('\n');
