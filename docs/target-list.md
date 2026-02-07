@@ -34,20 +34,32 @@
 
 ---
 
-## Tier 2: Secondary Targets
+## Tier 2: Dental Vertical (Voice AI Pitch)
+
+| # | Agency | Location | Founder | Focus | Notes |
+|---|--------|----------|---------|-------|-------|
+| 11 | **Digital Floss** | US | TBD | Dental Funnels | "Turn visitors into booked appointments" -> Pitch Voice AI booking. |
+| 12 | **Ortho Marketing** | US | Dean Steinman | Orthodontists | "Guaranteed Patient Inquiries" -> Pitch Lead Qualification Agent. |
+| 13 | **Dominate Dental** | US | TBD | Invisalign Leads | "Like clockwork" -> Automate the follow-up calls. |
+| 14 | **My Social Practice** | US | Jack Hadley | Dental Social | Huge content agency. Pitch "Voice AI" as an upsell to their 1000s of clients. |
+| 15 | **Thrive Agency** | US | Matt Bowman | Full Service | Large agency. Pitch white-labeling our tech. |
+
+---
+
+## Tier 3: Secondary Targets
 
 | # | Agency | Location | Size | Focus | Notes |
 |---|--------|----------|------|-------|-------|
-| 11 | **RevenueZen** | US | 20-40 | B2B LinkedIn + SEO | Organic growth focus |
-| 12 | **The Munro Agency** | UK/US | 10-30 | Lead gen, automation | Rupert Morris (founder) |
-| 13 | **Bloxspring** | US | Small | B2B PR + ABM | Has proprietary analytics platform (understands data value) |
-| 14 | **Level Agency** | US | 30-50 | AI digital marketing | Has cross-channel attribution (data savvy) |
-| 15 | **50 Marketing** | US | Small | B2B manufacturing | Niche focus, small team |
-| 16 | **Stop The Scroll** | US | Small | LinkedIn content | B2B brand content |
-| 17 | **Promodo** | US/EU | 50+ | Performance marketing | Google Certified, eCommerce |
-| 18 | **CEO GPS** | Roswell, GA | Small | SEO, lead gen | Chris Green (founder), contractors focus |
-| 19 | **WebiMax** | US | 30-50 | Google Ads, PPC, reputation | Kenneth C (founder) |
-| 20 | **Aimers** | US | 20-40 | SaaS/B2B paid acquisition | Tech focus, $3K+/mo clients |
+| 16 | **RevenueZen** | US | 20-40 | B2B LinkedIn + SEO | Organic growth focus |
+| 17 | **The Munro Agency** | UK/US | 10-30 | Lead gen, automation | Rupert Morris (founder) |
+| 18 | **Bloxspring** | US | Small | B2B PR + ABM | Has proprietary analytics platform (understands data value) |
+| 19 | **Level Agency** | US | 30-50 | AI digital marketing | Has cross-channel attribution (data savvy) |
+| 20 | **50 Marketing** | US | Small | B2B manufacturing | Niche focus, small team |
+| 21 | **Stop The Scroll** | US | Small | LinkedIn content | B2B brand content |
+| 22 | **Promodo** | US/EU | 50+ | Performance marketing | Google Certified, eCommerce |
+| 23 | **CEO GPS** | Roswell, GA | Small | SEO, lead gen | Chris Green (founder), contractors focus |
+| 24 | **WebiMax** | US | 30-50 | Google Ads, PPC, reputation | Kenneth C (founder) |
+| 25 | **Aimers** | US | 20-40 | SaaS/B2B paid acquisition | Tech focus, $3K+/mo clients |
 
 ---
 
