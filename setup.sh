@@ -21,23 +21,39 @@ if ! command -v node &> /dev/null; then
 fi
 echo "✅ Node.js found."
 
-# 2. Install Global Utils (Optional)
-# echo "📦 Installing global utilities..."
-# npm install -g supabase
+# 2. Install Sub-Package Dependencies
 
-# 3. Setup Kitchen Assistant
-if [ -d "projects/kitchen-assistant" ]; then
-    echo "🍳 Setting up Kitchen Assistant..."
-    cd projects/kitchen-assistant
+# Sales Scripts
+if [ -d "scripts/sales" ]; then
+    echo "📦 Installing Sales Triage dependencies..."
+    cd scripts/sales
     if [ -f "package.json" ]; then
         npm install
-    else
-        echo "⚠️  No package.json found in kitchen-assistant."
     fi
     cd ../..
 fi
 
-# 4. Setup Hooks (Lobster)
+# Outreach Scripts
+if [ -d "scripts/outreach" ]; then
+    echo "📦 Installing Outreach Generator dependencies..."
+    cd scripts/outreach
+    if [ -f "package.json" ]; then
+        npm install
+    fi
+    cd ../..
+fi
+
+# Agency Website (Next.js)
+if [ -d "projects/agency-website" ]; then
+    echo "📦 Installing Agency Website dependencies..."
+    cd projects/agency-website
+    if [ -f "package.json" ]; then
+        npm install
+    fi
+    cd ../..
+fi
+
+# 3. Setup Hooks (Lobster)
 echo "🦞 Setting up git hooks..."
 # (Future: Install pre-commit hooks)
 
