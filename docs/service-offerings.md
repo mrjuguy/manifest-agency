@@ -1,7 +1,35 @@
 # SERVICE_OFFERINGS.md - What Manifest Agency Sells
 
 ## One-Liner
-> "Stop hiring analysts to do robot work. We build autonomous data agents that ingest, clean, and report client data instantly."
+> "Stop hiring humans for robot work. We deploy autonomous AI staff that speak, sell, and recruit 24/7."
+
+---
+
+## Core Verticals
+
+### 1. AI Staffing (Voice Agents)
+**"The Infinite Workforce"**
+We build white-label Voice AI agents that sound human, think fast, and never sleep.
+
+| Product | Role | Features | Ideal For |
+|:---|:---|:---|:---|
+| **AI Recruiter** | **Screening** | Resume parsing, 10-min phone interview, culture fit ranking. | Staffing Firms, HR Depts |
+| **AI SDR** | **Outbound** | Cold calling, lead qualification, objection handling, booking. | B2B SaaS, Agencies |
+| **AI Receptionist** | **Inbound** | 24/7 answering, FAQ resolution, appointment scheduling. | Dental, Legal, Home Services |
+
+**Pricing:** Setup Fee ($5k-$10k) + Usage ($0.20/min) or SaaS License.
+
+### 2. The Growth Stack (pSEO + Outbound)
+**"The Automated Pipeline"**
+We build the infrastructure to generate leads while you sleep.
+
+| Product | Role | Features | Ideal For |
+|:---|:---|:---|:---|
+| **pSEO Engine** | **Inbound** | 1,000s of "Programmatic SEO" landing pages (e.g., "Best Agency for [Niche]"). | B2B Services, Directories |
+| **Sales Triage** | **Outbound** | Enriches leads (Apollo), drafts hyper-personalized emails, syncs to CRM. | High-Ticket Sales Teams |
+| **LLM Rank Tracker** | **Analytics** | Tracks your brand's "Share of Voice" on ChatGPT & Perplexity. | SEO Agencies |
+
+**Pricing:** Retainer ($2k-$5k/mo) or Revenue Share.
 
 ---
 
@@ -16,60 +44,26 @@ We don't sell hours. We sell **digital labor** that graduates from "Intern" to "
 
 ---
 
-## The 3 Stages of Automation (Maturity Curve)
-
-### Stage 1: The "Band-Aid" Phase (No-Code)
-- **Tools:** Zapier, Make, Sheets.
-- **Problem:** "Spaghetti Automation". Fragile. Breaks at scale.
-- **Our Solution:** We migrate clients *off* this.
-
-### Stage 2: The "Scripting" Phase (Low-Code)
-- **Tools:** Python scripts on laptops, Cron jobs.
-- **Problem:** Unmaintained. No logs. Bus factor of 1.
-- **Our Solution:** We professionalize this logic.
-
-### Stage 3: The "Platform" Phase (Engineering)
-- **Tools:** Airbyte, dbt, BigQuery, Prefect.
-- **Problem:** Hard to build in-house.
-- **Our Solution:** **We deploy this Day 1.** "Self-Driving Agency" infrastructure.
-
----
-
-## Core Offerings
-
-### 1. The Technical Audit (The "Roadmap")
-- **Price:** $5,000 (Flat)
-- **Deliverable:** Full audit of current workflows + Architecture Plan.
-- **Goal:** Move from Stage 1 to Stage 3.
-
-### 2. The Data Pipeline (The "Plumbing")
-- **Focus:** Automated Ingestion & ETL.
-- **Outcome:** "Messy Client Data" → "Clean Database" automatically.
-- **Tech:** Airbyte/Fivetran + dbt + Snowflake/BigQuery.
-
-### 3. The Digital Worker (The "Agent")
-- **Focus:** End-to-end task execution.
-- **Outcome:** "Read email" → "Update CRM" → "Generate Report" → "Send Draft".
-- **Tech:** LLM Agents (OpenAI/Claude) + Tool Use.
-
----
-
 ## Ideal Client Profile (ICP)
 
-**Company Size:** 10-50 employees (Agency/Consulting)
-**Pain:** "We are growing, but our margins are shrinking because we have to hire more people to manage the data."
-**Trigger:** Just lost a client due to a reporting error OR just hired their 3rd Data Entry VA.
+**Primary:** Marketing Agencies (10-50 employees)
+- **Pain:** "Our margins are shrinking because we have to hire more people to manage client reporting/calls."
+- **Trigger:** Lost a client due to slow response time OR just hired their 3rd VA.
+
+**Secondary:** Staffing/Recruiting Firms
+- **Pain:** "We spend 8 hours/day screening resumes and leaving voicemails."
+- **Trigger:** High volume of low-quality applicants.
 
 ---
 
 ## Positioning
 
-**We are:** AI Engineers who understand Agency Operations.
+**We are:** AI Engineers who build proprietary assets.
 **We are NOT:**
-- A "No-Code" Shop (We code).
-- A "Consultancy" (We build).
-- An "Outsourcing Firm" (We automate).
+- A "No-Code" Shop (We write code).
+- A "Lead Gen Agency" (We build the *system*, you run it).
+- An "Outsourcing Firm" (We automate, we don't offshore).
 
 ---
 
-*Last updated: 2026-01-30*
+*Last updated: 2026-02-13*
