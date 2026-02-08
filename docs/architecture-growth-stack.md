@@ -1,59 +1,48 @@
-# Growth Stack Architecture
-
-**Version:** 1.0
-**Status:** Implemented in `feat/growth-stack`
+# Architecture: Growth Stack & Dashboard Integration
 
 ## Overview
-The Growth Stack is a set of automated workflows designed to generate leads, onboard clients, and handle voice calls without human intervention.
+This document outlines the technical architecture for the "Growth Stack" (pSEO + Sales Automation) and its integration with the Clawdbot Gateway.
 
-## Components
+## The "Headless Agent" Pattern
 
-### 1. Sales Automation (Octolens)
-*   **Goal:** Capture high-intent leads from social media (Twitter/Reddit).
-*   **Flow:**
-    1.  **Octolens** detects keyword ("reporting nightmare", "agency burnout").
-    2.  **Webhook** fires to `/api/webhooks/octolens`.
-    3.  **Next.js** verifies signature and logs lead.
-    4.  *(Future)* Trigger `sales-triage.lobster` to draft outreach.
+To enable our Next.js dashboard to trigger complex agentic workflows (like "Enrich Lead" or "Draft Email"), we use Clawdbot's `/tools/invoke` HTTP endpoint. This allows the frontend to act as a remote control for the agent.
 
-### 2. Zero-Touch Onboarding (Leadsie)
-*   **Goal:** Grant ad account access in 1 click.
-*   **Flow:**
-    1.  Client clicks `leadsie.com/request/...`.
-    2.  **Leadsie** handles OAuth with Meta/Google.
-    3.  **Webhook** fires to `/api/webhooks/leadsie`.
-    4.  **Next.js** triggers Airbyte to create a new Source for that ad account.
-    5.  **BigQuery** dataset is created automatically.
+### 1. API Flow
+1.  **User Action:** Admin clicks "Run Enrichment" on a lead in the Next.js Dashboard.
+2.  **Next.js API Route:** `POST /api/agents/invoke` receives the request.
+3.  **Clawdbot Gateway:** The API route forwards the request to `http://localhost:18789/tools/invoke`.
+    -   **Headers:** `Authorization: Bearer <CLAWDBOT_GATEWAY_TOKEN>`
+    -   **Body:**
+        ```json
+        {
+          "tool": "sessions_spawn",
+          "action": "run",
+          "args": {
+            "task": "Enrich lead: alex@scaleupsaas.com using Apollo and save to Supabase.",
+            "model": "claude-3-7-sonnet"
+          }
+        }
+        ```
+4.  **Agent Execution:** Clawdbot spawns a sub-agent to perform the task asynchronously.
+5.  **Feedback:** The dashboard polls the database (Supabase) for updates, or listens for a webhook from the agent.
 
-### 3. Voice Receptionist (Vapi.ai)
-*   **Goal:** Handle inbound calls 24/7.
-*   **Flow:**
-    1.  **Vapi.ai** receives call.
-    2.  **LLM** determines intent (Book Appointment vs. General Q).
-    3.  **Function Call** hits `/api/voice/handler`.
-    4.  **Next.js** checks Calendar API for availability.
-    5.  **Vapi** speaks response via ElevenLabs.
+### 2. Why this approach?
+-   **Security:** The API token stays server-side in Next.js (`.env`).
+-   **Decoupling:** The dashboard doesn't need to know *how* to enrich a lead, only *that* the agent can do it.
+-   **Scalability:** We can offload long-running tasks to background agents without blocking the UI.
 
-## V2: Autonomous Agents (Planned)
+## pSEO Architecture (Programmatic SEO)
 
-### 4. Recruiter Squad (Vapi + DeepSeek R1)
-*   **Goal:** Screen candidates autonomously.
-*   **Flow:**
-    1.  **Orchestrator (R1):** Analyzes JD and sets strategy.
-    2.  **Screener (Vapi Agent):** Conducts Level 1 phone screen.
-    3.  **Warm Transfer:** Hands off to Human if "Tier A" match detected.
+### 1. Data Source
+-   **Content:** `content/pseo-data.json` (Structured data: Industries, Locations, Pain Points).
+-   **Templates:** Markdown/MDX templates in `src/app/services/[industry]/[location]/page.tsx`.
 
-### 5. Research Agent (LangGraph)
-*   **Goal:** Deep dives on prospect companies.
-*   **Flow:**
-    1.  **Browser Tool:** Scrapes prospect's website/LinkedIn.
-    2.  **GraphRAG:** Stores "Key Decision Makers" and "Pain Points" in Knowledge Graph.
-    3.  **Output:** Enriched Brief for the Sales Team.
+### 2. Build Process (SSG)
+-   Next.js `generateStaticParams()` iterates over the Cartesian product of `Industries x Locations`.
+-   **Scale:** 10 Industries x 50 Cities = 500 Landing Pages generated at build time.
+-   **Deployment:** Vercel (Edge Network) for sub-100ms TTFB.
 
-## Security
-*   All webhooks are protected by signature verification (HMAC SHA256) or Secret Tokens.
-*   API Routes run on Next.js Edge (where possible) for low latency.
-
-## Future Improvements
-*   **Event Logging:** Persist all webhook events to Supabase for debugging.
-*   **Retry Logic:** Use QStash (Upstash) to retry failed webhook processing.
+### 3. Conversion Loop
+-   Each page features a specific "AI Demo" CTA (e.g., "Hear the Dental AI Receptionist").
+-   **Capture:** Vapi Web SDK or Typeform embedded on the page.
+-   **Handoff:** Lead data sent to the "AI SDR" workflow via Webhook.
