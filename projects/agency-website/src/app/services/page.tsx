@@ -45,7 +45,7 @@ export default function Services() {
               <ul className="space-y-3 text-slate-600">
                 <li className="flex gap-3">
                     <span className="text-blue-600 font-bold">✓</span>
-                    No more "Export to CSV"
+                    No more &quot;Export to CSV&quot;
                 </li>
                 <li className="flex gap-3">
                     <span className="text-blue-600 font-bold">✓</span>
@@ -111,7 +111,7 @@ export default function Services() {
                 Warehousing & Transformation
               </h2>
               <p className="text-lg text-slate-600 mb-6">
-                Raw data is messy. We use modern tools like dbt and BigQuery/Snowflake to clean, model, and standardize your data into a "Single Source of Truth".
+                Raw data is messy. We use modern tools like dbt and BigQuery/Snowflake to clean, model, and standardize your data into a &quot;Single Source of Truth&quot;.
               </p>
               <ul className="space-y-3 text-slate-600">
                 <li className="flex gap-3">

@@ -31,15 +31,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   // pSEO Routes (Generated from content/pseo-data.json)
-  let pseoRoutes: MetadataRoute.Sitemap = [];
+  const pseoRoutes: MetadataRoute.Sitemap = [];
   try {
     // Note: Adjust path if deployed structure differs
     const pseoDataPath = path.join(process.cwd(), '../../content/pseo-data.json');
     if (fs.existsSync(pseoDataPath)) {
       const data = JSON.parse(fs.readFileSync(pseoDataPath, 'utf8'));
       if (data.industries && data.locations) {
-        data.industries.forEach((ind: any) => {
-          data.locations.forEach((loc: any) => {
+        data.industries.forEach((ind: { slug: string }) => {
+          data.locations.forEach((loc: { slug: string }) => {
             pseoRoutes.push({
               url: `${baseUrl}/services/${ind.slug}/${loc.slug}`,
               lastModified: new Date(),

@@ -61,7 +61,7 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
           <div className="mt-16 pt-8 border-t border-slate-200 text-center">
             <h3 className="text-xl font-bold text-slate-900 mb-4">Want to implement this?</h3>
             <p className="text-slate-600 mb-6">
-                We build the systems we write about. Let's discuss your agency's architecture.
+                We build the systems we write about. Let&apos;s discuss your agency&apos;s architecture.
             </p>
             <Link 
               href="/book"

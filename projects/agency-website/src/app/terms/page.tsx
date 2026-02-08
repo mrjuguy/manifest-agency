@@ -13,7 +13,7 @@ export default function Terms() {
 
           <h2>1. Acceptance of Terms</h2>
           <p>
-            By accessing and using the website and services of Manifest Automations ("we", "us", or "our"), you agree to be bound by these Terms of Service. If you do not agree, please do not use our services.
+            By accessing and using the website and services of Manifest Automations (&quot;we&quot;, &quot;us&quot;, or &quot;our&quot;), you agree to be bound by these Terms of Service. If you do not agree, please do not use our services.
           </p>
 
           <h2>2. Services</h2>
@@ -27,7 +27,7 @@ export default function Terms() {
           </p>
           <ul>
             <li>Content on this website is owned by Manifest Automations.</li>
-            <li>Code and automations built for you under a "Work for Hire" agreement become your property upon full payment.</li>
+            <li>Code and automations built for you under a &quot;Work for Hire&quot; agreement become your property upon full payment.</li>
           </ul>
 
           <h2>4. Limitation of Liability</h2>

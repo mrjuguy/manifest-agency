@@ -88,7 +88,7 @@ export default function Demo() {
                         <div className="flex gap-4 flex-row-reverse">
                             <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-xs font-bold text-white">AI</div>
                             <div className="bg-blue-600 p-3 rounded-l-xl rounded-br-xl shadow-md max-w-[80%] text-sm text-white">
-                                I'm so sorry to hear that! Yes, we are open this Saturday from 9 AM to 2 PM. Would you like me to squeeze you in for an emergency exam?
+                                I&apos;m so sorry to hear that! Yes, we are open this Saturday from 9 AM to 2 PM. Would you like me to squeeze you in for an emergency exam?
                             </div>
                         </div>
                         <div className="flex gap-4">
@@ -107,14 +107,14 @@ export default function Demo() {
                         <div className="flex gap-4">
                             <div className="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center text-xs font-bold">Usr</div>
                             <div className="bg-white p-3 rounded-r-xl rounded-bl-xl border border-slate-200 shadow-sm max-w-[80%] text-sm text-slate-700">
-                                Perfect. I'll take it.
+                                Perfect. I&apos;ll take it.
                             </div>
                         </div>
                         <div className="flex gap-4 flex-row-reverse">
                             <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-xs font-bold text-white">AI</div>
                             <div className="bg-blue-600 p-3 rounded-l-xl rounded-br-xl shadow-md max-w-[80%] text-sm text-white">
-                                <span className="block text-blue-200 text-xs mb-1 font-mono">Action: book_appointment('9:15', 'Saturday')</span>
-                                You're all set for 9:15 AM Saturday. I'll send a confirmation text now. Feel better!
+                                <span className="block text-blue-200 text-xs mb-1 font-mono">Action: book_appointment(&apos;9:15&apos;, &apos;Saturday&apos;)</span>
+                                You&apos;re all set for 9:15 AM Saturday. I&apos;ll send a confirmation text now. Feel better!
                             </div>
                         </div>
                     </div>
@@ -155,7 +155,7 @@ export default function Demo() {
 
             <div className="mt-12 text-center">
                 <p className="text-slate-600 mb-4">
-                    This is what "Staffing 2.0" looks like.
+                    This is what &quot;Staffing 2.0&quot; looks like.
                 </p>
                 <Link 
                     href="/book"

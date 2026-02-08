@@ -108,7 +108,7 @@ export default async function Page({ params }: PageProps) {
           <div className="max-w-4xl mx-auto px-4">
             <h2 className="text-3xl font-bold text-center mb-12">Why {location.name} {industry.name} Need Automation</h2>
             <div className="grid md:grid-cols-3 gap-8">
-              {industry.stats.map((stat: any, index: number) => (
+              {industry.stats.map((stat: { label: string; value: string; source: string }, index: number) => (
                 <div key={index} className="p-6 bg-slate-50 rounded-xl border border-slate-200 text-center">
                   <div className="text-4xl font-extrabold text-blue-600 mb-2">{stat.value}</div>
                   <div className="font-semibold text-slate-900">{stat.label}</div>

@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -17,7 +16,7 @@ export default function Book() {
           </p>
           
           <div className="bg-slate-50 p-8 rounded-2xl border border-slate-200 shadow-sm mb-12">
-            <h2 className="text-lg font-bold text-slate-900 mb-4">What we'll cover:</h2>
+            <h2 className="text-lg font-bold text-slate-900 mb-4">What we&apos;ll cover:</h2>
             <ul className="text-left space-y-4 max-w-md mx-auto mb-8 text-slate-600">
               <li className="flex gap-3">
                 <span className="text-blue-600 font-bold">✓</span>

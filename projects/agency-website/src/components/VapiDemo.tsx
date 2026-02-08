@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 
 export default function VapiDemo() {
   const [status, setStatus] = useState<'idle' | 'connecting' | 'connected'>('idle');
-  const [vapi, setVapi] = useState<any>(null);
+  const [vapi, setVapi] = useState<unknown>(null);
 
   useEffect(() => {
     // Dynamic import to avoid SSR issues if package was installed
@@ -16,7 +16,7 @@ export default function VapiDemo() {
 
         vapiInstance.on('call-start', () => setStatus('connected'));
         vapiInstance.on('call-end', () => setStatus('idle'));
-        vapiInstance.on('error', (e: any) => console.error(e));
+        vapiInstance.on('error', (e: unknown) => console.error(e));
     }).catch(() => {
         console.log("Vapi SDK not found - mocking for UI demo");
     });
@@ -29,12 +29,14 @@ export default function VapiDemo() {
     }
     setStatus('connecting');
     // Replace with your Assistant ID
-    vapi.start('YOUR_ASSISTANT_ID');
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (vapi as any).start('YOUR_ASSISTANT_ID');
   };
 
   const stopCall = () => {
     if (vapi) {
-        vapi.stop();
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (vapi as any).stop();
     }
     setStatus('idle');
   };

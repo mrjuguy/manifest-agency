@@ -8,7 +8,7 @@ export default function Footer() {
           Ready to Automate Your Operations?
         </h2>
         <p className="text-slate-600 mb-8 max-w-2xl mx-auto">
-          Let's look at your current process. If we can't automate it, we'll
+          Let&apos;s look at your current process. If we can&apos;t automate it, we&apos;ll
           tell you. No sales pressure. Just engineering.
         </p>
         <a

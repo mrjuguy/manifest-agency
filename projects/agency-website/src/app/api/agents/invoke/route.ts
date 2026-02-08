@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server';
 interface AgentInvokeRequest {
   task: string;
   model?: string;
-  context?: Record<string, any>;
+  context?: Record<string, unknown>;
 }
 
 export async function POST(req: Request) {
@@ -77,7 +77,7 @@ export async function POST(req: Request) {
       taskId: data.result?.sessionId // If sessions_spawn returns the new session ID
     });
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Agent Invoke Error:', error);
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }

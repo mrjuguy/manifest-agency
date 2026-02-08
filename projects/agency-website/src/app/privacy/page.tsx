@@ -13,7 +13,7 @@ export default function Privacy() {
 
           <h2>1. Introduction</h2>
           <p>
-            Manifest Automations ("we", "us", or "our") respects your privacy. This Privacy Policy explains how we collect, use, and share information about you when you visit our website or use our services.
+            Manifest Automations (&quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) respects your privacy. This Privacy Policy explains how we collect, use, and share information about you when you visit our website or use our services.
           </p>
 
           <h2>2. Information We Collect</h2>

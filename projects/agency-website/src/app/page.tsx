@@ -2,11 +2,9 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { getSortedCaseStudies } from "@/lib/case-studies";
-import { getSortedTestimonials } from "@/lib/testimonials";
 
 export default function Home() {
   const caseStudies = getSortedCaseStudies();
-  const testimonials = getSortedTestimonials();
 
   return (
     <div className="min-h-screen bg-white text-slate-900 font-sans">
@@ -46,7 +44,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-              Your Team is Drowning in "Busy Work"
+              Your Team is Drowning in &quot;Busy Work&quot;
             </h2>
             <p className="mt-4 text-lg text-slate-600">
               You hired smart people to strategize. Why are they answering phones and screening resumes?
@@ -60,7 +58,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-bold text-slate-900 mb-3">Missed Calls = Lost Revenue</h3>
               <p className="text-slate-600">
-                30% of calls go to voicemail. For a dental clinic or law firm, that's $10k/mo in lost deals.
+                30% of calls go to voicemail. For a dental clinic or law firm, that&apos;s $10k/mo in lost deals.
               </p>
             </div>
             <div className="bg-white p-8 rounded-xl shadow-sm border border-slate-100">
@@ -78,7 +76,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-bold text-slate-900 mb-3">Outbound is Broken</h3>
               <p className="text-slate-600">
-                SDRs burn out after 3 months. Spamming generic emails doesn't work anymore. You need hyper-personalization.
+                SDRs burn out after 3 months. Spamming generic emails doesn&apos;t work anymore. You need hyper-personalization.
               </p>
             </div>
           </div>
@@ -100,7 +98,7 @@ export default function Home() {
                 AI Staffing & Growth Infrastructure.
               </h2>
               <p className="text-lg text-slate-600 mb-8">
-                We don't just give you a login. We deploy fully-trained agents that integrate into your existing team.
+                We don&apos;t just give you a login. We deploy fully-trained agents that integrate into your existing team.
               </p>
               
               <div className="space-y-8">
@@ -120,7 +118,7 @@ export default function Home() {
                   <div>
                     <h4 className="font-bold text-slate-900 text-lg">The Growth Stack</h4>
                     <p className="text-slate-600 mt-1">
-                      **pSEO Engine:** Deploys 1,000s of "Best Agency in [City]" landing pages.<br/>
+                      **pSEO Engine:** Deploys 1,000s of &quot;Best Agency in [City]&quot; landing pages.<br/>
                       **Sales Triage:** Enriches inbound leads and drafts personalized emails instantly.
                     </p>
                   </div>
@@ -136,16 +134,16 @@ export default function Home() {
                 <div className="w-3 h-3 rounded-full bg-green-500"></div>
               </div>
               <p><span className="text-purple-400">const</span> <span className="text-blue-400">recruiter</span> = <span className="text-yellow-300">new</span> Agent(&#123;</p>
-              <p className="pl-4">role: <span className="text-green-300">'Senior Recruiter'</span>,</p>
-              <p className="pl-4">voice: <span className="text-green-300">'Sarah_V2'</span>,</p>
-              <p className="pl-4">tools: [<span className="text-green-300">'calendar'</span>, <span className="text-green-300">'ats_sync'</span>]</p>
+              <p className="pl-4">role: <span className="text-green-300">&apos;Senior Recruiter&apos;</span>,</p>
+              <p className="pl-4">voice: <span className="text-green-300">&apos;Sarah_V2&apos;</span>,</p>
+              <p className="pl-4">tools: [<span className="text-green-300">&apos;calendar&apos;</span>, <span className="text-green-300">&apos;ats_sync&apos;</span>]</p>
               <p>&#125;);</p>
               <br/>
-              <p><span className="text-slate-500">// 📞 Incoming call from candidate...</span></p>
+              <p><span className="text-slate-500">{`// 📞 Incoming call from candidate...`}</span></p>
               <p><span className="text-blue-400">recruiter</span>.<span className="text-yellow-300">listen</span>();</p>
-              <p><span className="text-green-400">"Hey! I saw your React experience. Can you tell me about a time you optimized a slow render?"</span></p>
+              <p><span className="text-green-400">&quot;Hey! I saw your React experience. Can you tell me about a time you optimized a slow render?&quot;</span></p>
               <br/>
-              <p><span className="text-slate-500">// 🧠 Reasoning (DeepSeek R1)...</span></p>
+              <p><span className="text-slate-500">{`// 🧠 Reasoning (DeepSeek R1)...`}</span></p>
               <p><span className="text-purple-400">Analysis:</span> Candidate explained `useMemo` correctly but missed `React.memo`.</p>
               <p><span className="text-blue-400">Score:</span> 8/10. <span className="text-green-400">✓ Passing to Hiring Manager.</span></p>
             </div>
@@ -205,7 +203,7 @@ export default function Home() {
             Ready to Automate Your Agency?
           </h2>
           <p className="text-xl text-slate-300 mb-10">
-            We operate on an "Earned Autonomy" model. <br/>
+            We operate on an &quot;Earned Autonomy&quot; model. <br/>
             Start with a pilot. Scale as we prove ROI.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

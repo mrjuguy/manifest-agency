@@ -36,7 +36,7 @@ export default function Calculator() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl mb-4">
-              The Cost of "Manual Labor"
+              The Cost of &quot;Manual Labor&quot;
             </h1>
             <p className="text-xl text-slate-600">
               See how much you are paying smart people to do robot work.
@@ -109,7 +109,7 @@ export default function Calculator() {
                   ${annualCost.toLocaleString()}
                 </div>
                 <div className="mt-4 pt-4 border-t border-slate-700 text-slate-300 text-sm">
-                  That's <span className="font-bold text-white">${fiveYearCost.toLocaleString()}</span> over 5 years.
+                  That&apos;s <span className="font-bold text-white">${fiveYearCost.toLocaleString()}</span> over 5 years.
                 </div>
               </div>
 
