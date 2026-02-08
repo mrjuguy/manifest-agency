@@ -58,6 +58,11 @@ async function main() {
         process.exit(1);
     }
 
+    if (!DRY_RUN && (process.env.SMTP_USER.includes('example.com') || process.env.SMTP_PASS === 'your-app-password')) {
+        console.error('❌ Error: .env still contains default placeholder values. Please update SMTP_USER and SMTP_PASS.');
+        process.exit(1);
+    }
+
     const files = fs.readdirSync(DRAFTS_DIR).filter(f => f.endsWith('_draft.txt'));
     
     if (files.length === 0) {

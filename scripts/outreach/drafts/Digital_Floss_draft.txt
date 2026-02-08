@@ -1,7 +1,7 @@
-To: TBD
+To: anissa@digitalfloss.com
 Subject: Voice AI for Digital Floss's clients
 
-Hi US,
+Hi Anissa,
 
 "Turn visitors into booked appointments" -> Pitch Voice AI booking.
 

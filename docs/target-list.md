@@ -38,9 +38,9 @@
 
 | # | Agency | Location | Founder | Focus | Notes |
 |---|--------|----------|---------|-------|-------|
-| 11 | **Digital Floss** | US | TBD | Dental Funnels | "Turn visitors into booked appointments" -> Pitch Voice AI booking. |
+| 11 | **Digital Floss** | US | Dr. Anissa Broussard | Dental Funnels | "Turn visitors into booked appointments" -> Pitch Voice AI booking. |
 | 12 | **Ortho Marketing** | US | Dean Steinman | Orthodontists | "Guaranteed Patient Inquiries" -> Pitch Lead Qualification Agent. |
-| 13 | **Dominate Dental** | US | TBD | Invisalign Leads | "Like clockwork" -> Automate the follow-up calls. |
+| 13 | **Dominate Dental** | US | Dan Ashburn | Invisalign Leads | "Like clockwork" -> Automate the follow-up calls. |
 | 14 | **My Social Practice** | US | Jack Hadley | Dental Social | Huge content agency. Pitch "Voice AI" as an upsell to their 1000s of clients. |
 | 15 | **Thrive Agency** | US | Matt Bowman | Full Service | Large agency. Pitch white-labeling our tech. |
 
@@ -50,11 +50,11 @@
 
 | # | Agency | Location | Founder/CEO | Focus | Notes |
 |---|--------|----------|-------------|-------|-------|
-| 16 | **Rocket** | US | TBD | High-Growth Tech | "4 in 5 get interviews" -> Automate the first round. |
+| 16 | **Rocket** | US | Arjun Lall | High-Growth Tech | "4 in 5 get interviews" -> Automate the first round. |
 | 17 | **Riviera Partners** | US | Will Hunsinger | Engineering Execs | High-end. Pitch "DeepSeek R1" for executive screening. |
 | 18 | **RecWorks** | UK/Remote | Barry Cranford | Java Developers | Pitch "AI Technical Interviewer" for Java. |
 | 19 | **Betts Recruiting** | US | Carolyn Betts | GTM / Sales | Pitch "AI SDR" to recruit SDRs. |
-| 20 | **Motion Recruitment** | US | TBD | IT Staffing | High volume. Pitch "Resume Screening Agent" to cut costs. |
+| 20 | **Motion Recruitment** | US | Beth Gilfeather | IT Staffing | High volume. Pitch "Resume Screening Agent" to cut costs. |
 
 ---
 
