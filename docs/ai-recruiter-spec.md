@@ -107,3 +107,4 @@ create table interviews (
 
 ### Phase 3: ATS Integration
 - Sync with Greenhouse/Lever/Ashby via MCP.
+- **BambooHR Integration:** Use the official BambooHR MCP server to read open roles and create candidate profiles automatically.
