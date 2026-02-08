@@ -30,7 +30,7 @@ interface PageProps {
 
 // Helper to load data
 async function getData() {
-  const filePath = path.join(process.cwd(), '../../../content/pseo-data.json');
+  const filePath = path.join(process.cwd(), '../../content/pseo-data.json');
   const fileContents = fs.readFileSync(filePath, 'utf8');
   return JSON.parse(fileContents);
 }

@@ -111,7 +111,7 @@ export default function Home() {
                     <p className="text-slate-600 mt-1">
                       **AI Recruiter:** Screens candidates via phone, ranks them by culture fit.<br/>
                       **AI Receptionist:** Answers 24/7, books appointments in your calendar.<br/>
-                      **AI SDR:** Cold calls leads with <500ms latency and human-like pause handling.
+                      **AI SDR:** Cold calls leads with &lt;500ms latency and human-like pause handling.
                     </p>
                   </div>
                 </div>
