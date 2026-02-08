@@ -1,160 +1,162 @@
-# Manifest Automations - Website Copy v1.1
+# Manifest Automations - Website Copy v2.0 (AI Staffing Pivot)
 
-**Target Audience:** B2B Service Companies (Healthcare, Finance, Marketing)
-**Goal:** Book a Discovery Call OR Capture Lead
-**Tone:** Professional, direct, results-oriented. Less "fluff", more "engineering".
-**Optimizations:** 2026 High-Conversion Standards (Video, Short Form, Long Copy)
+**Target Audience:** High-Growth Agencies, Recruiting Firms, B2B Sales Teams
+**Goal:** Book a Demo of the AI Worker
+**Tone:** Futuristic, tangible, empowering. "The future of work is hybrid (Human + AI)."
 
 ---
 
 ## 1. Hero Section
 
 **Headline:**
-**Stop Hiring Analysts to Do Robot Work.**
+**Hire Your First AI Employee.**
 
 **Subheadline:**
-We build automated data pipelines that ingest, clean, and report your client data instantly. Scale your agency without scaling your headcount.
+We deploy autonomous AI agents that recruit candidates, qualify leads, and manage ops 24/7.
+Stop renting software. Start hiring intelligence.
 
 **Visual:**
-*[VIDEO PLACEHOLDER: 60s looping demo of a CSV turning into a Dashboard automatically]*
+*[VIDEO PLACEHOLDER: Split screen. Left: AI Recruiter conducting a phone interview. Right: Dashboard updating "Qualified Candidate" status in real-time.]*
 
 **Primary CTA:**
-[Book a Technical Audit]
+[Interview Our AI Recruiter]
+*(Links to Vapi Web Call Demo)*
 
 **Secondary CTA:**
-[See the Demo]
+[View Available Roles]
 
 ---
 
-## 2. Social Proof (Trust Bar)
+## 2. Social Proof
 
 **Text:**
-Trusted by forward-thinking agencies scaling to $10M+
+Deploying digital workforces for:
 
-*[LOGO STRIP: Placeholder Logos]*
-
----
-
-## 3. The Problem (The "Pain")
-
-**Headline:**
-**Is Your Growth Bottlenecked by Spreadsheets?**
-
-You signed the client. You have the strategy. But your team is drowning in data chaos.
-
-*   **Slow Onboarding:** Does it take 40+ hours to map a new client's data?
-*   **Wasted Talent:** Are your expensive analysts spending 60% of their time cleaning CSVs?
-*   **Fragile Systems:** Does your entire reporting flow break when a client changes one column?
-
-**You don't need more people. You need better plumbing.**
+*[LOGO STRIP: Placeholder Logos - Recruiting Firms, Dental Networks, SaaS Sales Teams]*
 
 ---
 
-## 4. The Solution
+## 3. The Problem (The "Scale Wall")
 
 **Headline:**
-**Automated Data Infrastructure for High-Growth Agencies.**
+**You Can't Scale With Humans Alone.**
 
-We are not consultants who give you a slide deck. We are engineers who build the machine you wish you had.
+You have the demand. You have the leads. But you're bottlenecked by **time**.
 
-### 🔹 Automated Ingestion
-Stop the email-to-Excel shuffle. We build secure FTP/API connectors that pull client data automatically the moment it exists.
+*   **Recruiting:** 70% of resumes are ignored because your recruiters are busy.
+*   **Sales:** Inbound leads go cold in 5 minutes if you don't call.
+*   **Cost:** Hiring a human SDR costs $60k + benefits + 3 months ramp time.
 
-### 🔹 Intelligent ETL
-Messy data in, clean data out. Our pipelines standardize wild formats (CSV, XML, JSON, Excel) into a single source of truth—automatically handling errors and edge cases.
+**Software tools don't solve this. They just give your busy humans more notifications.**
 
-### 🔹 Live BI Integration
-Feed DOMO, Tableau, or PowerBI directly. Your dashboards update in near real-time, not "whenever Steve gets to it on Friday."
+---
+
+## 4. The Solution: AI Staffing
+
+**Headline:**
+**Digital Workers. Real Results.**
+
+We don't sell tools. We staff roles. Our AI agents join your team, use your slack, and hit your KPIs.
+
+### 📞 The AI Recruiter
+**"The 24/7 Screen"**
+*   **Role:** First-round screening interviews.
+*   **Capabilities:** Calls candidates, asks behavioral questions, scores answers (1-10), updates ATS.
+*   **Capacity:** 10,000 interviews/month.
+*   **Cost:** <$1.00 per interview.
+
+### 💼 The AI SDR
+**"The Instant Response"**
+*   **Role:** Inbound lead qualification & Outbound prospecting.
+*   **Capabilities:** Enriches leads, sends personalized emails, handles objections, books meetings.
+*   **Speed:** Responds to form fills in <60 seconds.
+
+### 🧠 The Operations Architect
+**"The Data Plumber"**
+*   **Role:** Backend automation & reporting.
+*   **Capabilities:** Cleans data, generates reports, syncs systems (HubSpot <-> ATS).
+*   **Reliability:** Zero errors. Zero downtime.
 
 ---
 
 ## 5. How It Works
 
 **Headline:**
-**From Chaos to Code in 8 Weeks.**
+**Onboarding in Days, Not Months.**
 
-1.  **Discovery (1 Week):** We audit your current manual mess. We interview your team, trace the data, and design the architecture. You get a roadmap, even if you don't hire us.
-2.  **Implementation (4-6 Weeks):** We build the pipeline. Database setup, ETL logic, connectors, and security. We test it with your actual data.
-3.  **Handoff & Training (1 Week):** We hand over the keys. You get full documentation, a training session, and a system that runs itself.
+1.  **Define the Role (Day 1):** We don't ask for "requirements". We ask for a **Job Description**. What should this agent *do*?
+2.  **Training (Day 2-5):** We feed the agent your knowledge base, scripts, and past successful calls. It learns your voice.
+3.  **Audition (Day 6):** You interview the AI. You try to break it. We refine the prompts.
+4.  **Go Live (Day 7):** The agent starts working. You monitor via our "Command Center" dashboard.
 
 ---
 
 ## 6. Pricing Models
 
 **Headline:**
-**Pay for Results, Not Hours.**
+**Salary or hourly? You choose.**
 
-We offer two ways to engage, depending on your maturity.
+### 🟢 Usage-Based (Pay-As-You-Go)
+*Best for: Spiky volume (e.g., Seasonal Hiring)*
+*   **Voice:** $0.20 / minute.
+*   **Tasks:** $0.10 / task execution.
+*   **Setup:** $2,500 implementation fee.
 
-### 🛠️ Project-Based (The "Sprint")
-*Best for: Solving a specific, burning bottleneck.*
-*   **Scope:** Fixed deliverables (e.g., "Automate the Client Onboarding Pipeline").
-*   **Timeline:** 4-8 weeks.
-*   **Cost:** Flat fee (typically $15k - $45k).
-*   **Outcome:** A finished system you own forever.
-
-### 🤖 Earned Autonomy (The "Digital Hire")
-*Best for: Ongoing operations and evolving workflows.*
-*   **Scope:** A dedicated AI Agent (or team) that learns your business.
-*   **Trust Level 1 (Intern):** $2k/mo. Read-only, suggestions, human approval required.
-*   **Trust Level 3 (Senior):** $8k/mo. Full autonomy, handles complex logic, reports exceptions.
-*   **Outcome:** A scalable workforce that gets smarter over time.
+### 🔵 The "Digital Salary" (Flat Rate)
+*Best for: Full-time roles*
+*   **Junior Agent:** $1,500/mo. (Handles routine tasks, escalates exceptions).
+*   **Senior Agent:** $4,000/mo. (Full autonomy, manages other agents, self-improving).
+*   **Unlimited:** Calls, tasks, and storage included.
 
 ---
 
 ## 7. Who We Are
 
-**Manifest Automations** is an engineering-first agency founded by developers who understand business.
+**Manifest Automations** is an AI Staffing Agency.
 
-We believe that human beings should do creative, strategic work. Robots should move data. If you are paying humans to move data, you are lighting money on fire.
+We believe the future company is **10 humans managing 1,000 agents**.
+We build the infrastructure that makes that possible.
 
-**We help you:**
-*   Reduce client onboarding time by 90%.
-*   Eliminate manual data entry errors.
-*   Increase margins by keeping headcount flat as you scale.
-
----
-
-## 8. FAQ (Objection Handling)
-
-**Q: Do we need to fire our analysts?**
-A: No. We free them from "janitor work" so they can do actual analysis and strategy.
-
-**Q: Is it secure?**
-A: Yes. We use enterprise-grade encryption and own no data. Your data stays in your cloud (AWS/Azure/GCP).
-
-**Q: What if the API changes?**
-A: That's why we build resilient pipelines with error handling. Plus, our retainer covers maintenance.
+**Our Promise:**
+*   We don't build "Chatbots". We build **Workers**.
+*   If the agent doesn't perform, you don't pay.
 
 ---
 
-## 9. Lead Capture (High Conversion)
+## 8. FAQ
+
+**Q: Does it sound robotic?**
+A: No. We use the latest "Voice-to-Voice" models (like GPT-4o and Claude 3.7). It pauses, listens to interruptions, and sounds 99% human.
+
+**Q: Can it integrate with my ATS/CRM?**
+A: Yes. We support Greenhouse, Lever, HubSpot, Salesforce, and 50+ others.
+
+**Q: Is it legal?**
+A: Yes. We recommend disclosing "I am an AI assistant" for transparency, but the technology is fully compliant.
+
+---
+
+## 9. Lead Capture
 
 **Headline:**
-**Get the "Automation ROI Calculator"**
-See exactly how much margin you're losing to manual work.
+**Hear the Difference.**
+Enter your number. Our AI Recruiter will call you *right now* for a mock interview.
 
 **Form:**
 *   [Name]
-*   [Work Email]
-*   [Agency Website]
-*   **[Send Me The Calculator]**
+*   [Phone Number]
+*   [Company]
+*   **[Call Me Now]**
 
 ---
 
-## 10. Footer / Final CTA
+## 10. Footer
 
 **Headline:**
-**Ready to Automate Your Operations?**
+**Ready to scale your team?**
 
-Let's look at your current process. If we can't automate it, we'll tell you.
+**[Book a Strategy Call]**
 
-**[Book Your Free 15-Min Discovery Call]**
-
-*   *No sales pressure.*
-*   *Talk directly to the engineers.*
-*   *Get a clear "Yes/No" on feasibility.*
-
----
-**Contact:**
-hello@manifestautomations.com
+*   *Manifest Automations: The AI Staffing Agency*
+*   *San Francisco, CA*
+*   *hello@manifestautomations.com*
