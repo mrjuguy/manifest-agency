@@ -32,9 +32,9 @@ Manifest Automations/
 ### 1. AI Staffing (Voice AI)
 -   **Tech Stack:** Vapi.ai (Orchestration), Claude 3.7 (Brain), ElevenLabs (Voice).
 -   **Products:**
-    -   **AI Recruiter:** Autonomous resume screening and phone interviews.
-    -   **AI SDR:** Cold calling and lead qualification.
-    -   **AI Receptionist:** 24/7 inbound call handling for SMBs.
+    -   **AI Recruiter:** Autonomous resume screening and phone interviews. [Spec](docs/ai-recruiter-spec.md)
+    -   **AI SDR:** Cold calling and lead qualification. [Spec](docs/ai-sdr-spec.md)
+    -   **AI Receptionist:** 24/7 inbound call handling for SMBs. [Spec](docs/ai-receptionist-spec.md)
 
 ### 2. Growth Stack (pSEO + Outbound)
 -   **Tech Stack:** Next.js (SSG), Apollo.io (Enrichment), LangGraph (Agent Logic).
