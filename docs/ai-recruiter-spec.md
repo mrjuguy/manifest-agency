@@ -71,6 +71,20 @@ create table interviews (
 );
 ```
 
+### 3.1 Knowledge Graph Extraction (DeepSeek R1)
+
+To enable advanced candidate matching and reasoning, the system uses a Knowledge Graph extracted from resumes.
+
+**Pipeline:**
+`Raw Text (PDF/Doc) -> DeepSeek R1 (Schema-Aligned Parsing) -> Graph DB (Neo4j/Supabase)`
+
+**Process:**
+1.  **Ingestion**: Candidate uploads resume.
+2.  **Extraction**: DeepSeek R1 processes the text using a strict JSON schema to extract entities (Experience, Skills, Education) and infer implicit skills (e.g., "React" -> "Frontend").
+3.  **Storage**: Structured data is stored in the Knowledge Graph.
+
+For the detailed schema and reasoning strategy, see [Knowledge Graph Schema](recruiting/graph-schema.md).
+
 ### 4. Integration Points
 
 #### Vapi Configuration (Assistant)

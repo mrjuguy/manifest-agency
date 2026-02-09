@@ -1,82 +1,131 @@
-# Knowledge Graph Schema: AI Staffing
+# Knowledge Graph Schema: Candidate Data Extraction
 
-**Version:** 1.0
-**Purpose:** Enables DeepSeek R1 to perform "Multi-Hop Reasoning" over candidates.
-**Database:** Neo4j / FalkorDB
+## Overview
+This document defines the schema and extraction strategy for converting unstructured candidate documents (Resumes, CVs, Transcripts) into a structured Knowledge Graph.
 
-## Why Graph?
-Standard SQL/Vector search cannot answer:
-> "Find me a candidate who worked at a Fintech startup during a growth phase."
+We utilize **DeepSeek R1** for its superior reasoning capabilities to perform "Schema-Aligned Parsing". This approach goes beyond simple keyword extraction by inferring implicit skills, role seniority, and domain expertise based on context.
 
-A Graph can:
-`Candidate -[WORKED_AT {year: 2024}]-> Company -[IS_A]-> "Fintech" -[STATUS]-> "Series B"`
+## Extraction Pipeline
+1.  **Input**: Raw text from PDF/Word documents (Resume/Transcript).
+2.  **Model**: DeepSeek R1 (reasoning-optimized).
+3.  **Strategy**: Chain-of-Thought (CoT) prompting with strict JSON schema enforcement.
+4.  **Output**: Structured JSON object matching the `CandidateProfile` schema.
+5.  **Storage**: Data is normalized and ingested into a Graph Database (Neo4j or Supabase Graph).
 
-## Nodes & Properties
+## JSON Schema Structure
 
-### 1. `Candidate`
-Represents the human applicant.
-- `id`: UUID
-- `name`: String
-- `total_yoe`: Float
-- `resume_summary`: Vector<Embeddings>
+The extraction target is a `CandidateProfile` object containing the following entities:
 
-### 2. `Company`
-Extracted from resume work history.
-- `name`: String
-- `tier`: ["Tier 1", "Startup", "Agency", "Enterprise"] (Inferred by R1)
-- `industry`: String
-- `stage`: ["Seed", "Growth", "Public"]
-
-### 3. `Skill`
-Canonical skill name (normalized).
-- `name`: "React"
-- `category`: "Frontend"
-- `aliases`: ["React.js", "ReactJS"]
-
-### 4. `JobRole`
-Standardized role title.
-- `title`: "Senior Software Engineer"
-- `level`: ["L3", "L4", "L5", "Staff"]
-
----
-
-## Relationships (Edges)
-
-### `(:Candidate)-[:WORKED_AT {duration_months: Int, is_current: Bool}]->(:Company)`
-Captures tenure.
-*Reasoning Pattern:* "Short tenure at 3 consecutive companies = 'Job Hopper' flag."
-
-### `(:Candidate)-[:USED_SKILL {proficiency: Int, last_used: Date}]->(:Skill)`
-Captures hard skills.
-*Reasoning Pattern:* "Hasn't used Java since 2020 = 'Rusty'."
-
-### `(:Company)-[:BELONGS_TO]->(:Industry)`
-Captures domain expertise.
-*Reasoning Pattern:* "Worked at Stripe + Plaid = 'Fintech Expert'."
-
-### `(:Company)-[:COMPETES_WITH]->(:Company)`
-Captures "Poaching" opportunities.
-*Reasoning Pattern:* "Client is Uber. Candidate worked at Lyft. Strong fit."
-
----
-
-## Sample Cypher Query (Reasoning)
-
-**Goal:** Find a React dev from a top-tier startup who knows Fintech.
-
-```cypher
-MATCH (c:Candidate)-[:WORKED_AT]->(comp:Company)
-WHERE comp.tier = "Tier 1" AND comp.industry = "Fintech"
-MATCH (c)-[:USED_SKILL]->(s:Skill)
-WHERE s.name = "React"
-RETURN c.name, comp.name, s.proficiency
-ORDER BY s.proficiency DESC
+```json
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "candidate_info": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "linkedin_url": { "type": "string" },
+        "portfolio_url": { "type": "string" },
+        "summary": { "type": "string" },
+        "total_years_experience": { "type": "number" }
+      }
+    },
+    "work_experience": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "company": { "type": "string" },
+          "title": { "type": "string" },
+          "start_date": { "type": "string", "format": "YYYY-MM" },
+          "end_date": { "type": "string", "format": "YYYY-MM" },
+          "is_current": { "type": "boolean" },
+          "description": { "type": "string" },
+          "technologies_used": { "type": "array", "items": { "type": "string" } },
+          "achievements": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "education": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "institution": { "type": "string" },
+          "degree": { "type": "string" },
+          "field_of_study": { "type": "string" },
+          "start_year": { "type": "string" },
+          "end_year": { "type": "string" }
+        }
+      }
+    },
+    "skills": {
+      "type": "object",
+      "properties": {
+        "explicit": { "type": "array", "items": { "type": "string" }, "description": "Skills explicitly mentioned in the text" },
+        "inferred": { "type": "array", "items": { "type": "string" }, "description": "Skills inferred via reasoning (e.g., React -> Frontend)" }
+      }
+    },
+    "projects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "technologies": { "type": "array", "items": { "type": "string" } },
+          "url": { "type": "string" }
+        }
+      }
+    }
+  }
+}
 ```
 
-## Ingestion Pipeline (R1)
+## DeepSeek R1: Reasoning & Inference
 
-1.  **Input:** Resume PDF.
-2.  **Extraction:** DeepSeek R1 extracts entities + relationships.
-3.  **Normalization:** Map "ReactJS" -> "React" node.
-4.  **Enrichment:** Use Proxycurl to fetch Company metadata (Tier, Industry) if unknown.
-5.  **Write:** Upsert to GraphDB.
+A key advantage of using DeepSeek R1 is its ability to perform "Reasoning" to populate the `skills.inferred` field and normalize data.
+
+### 1. Inferring Implicit Skills
+R1 analyzes the context of work experience to deduce skills that aren't explicitly listed.
+
+*   **Example 1:**
+    *   *Input:* "Built a responsive dashboard using Shadcn UI and managed state with Zustand."
+    *   *Explicit:* "Shadcn UI", "Zustand"
+    *   *Reasoning:* "Zustand is a state management library for React. Shadcn UI is a React component library. Therefore, the candidate knows **React** and **Frontend Development**."
+    *   *Inferred:* "React", "Frontend Development"
+
+*   **Example 2:**
+    *   *Input:* "Deployed microservices to ECS and configured ALBs via Terraform."
+    *   *Explicit:* "ECS", "ALB", "Terraform"
+    *   *Reasoning:* "ECS and ALB are AWS services. Terraform is Infrastructure as Code. This workflow implies **AWS**, **Cloud Engineering**, and **DevOps** practices."
+    *   *Inferred:* "AWS", "DevOps", "CI/CD"
+
+### 2. Normalizing Roles & Seniority
+R1 standardizes job titles to help with matching.
+
+*   *Input:* "Member of Technical Staff (Level 4)"
+*   *Inferred Normalized Title:* "Senior Software Engineer"
+
+### 3. Entity Resolution
+R1 disambiguates company names and institutions.
+
+*   *Input:* "CMU" -> *Output:* "Carnegie Mellon University"
+*   *Input:* "Meta" (2015) -> *Output:* "Facebook" (Context aware)
+
+## Graph Database Mapping (Neo4j)
+
+The extracted JSON is mapped to Graph nodes and relationships:
+
+*   **Nodes**: `Candidate`, `Skill`, `Company`, `Institution`, `Project`
+*   **Relationships**:
+    *   `(:Candidate)-[:HAS_SKILL {type: "explicit"|"inferred"}]->(:Skill)`
+    *   `(:Candidate)-[:WORKED_AT {role: "...", duration: "..."}]->(:Company)`
+    *   `(:Candidate)-[:EDUCATED_AT]->(:Institution)`
+    *   `(:Project)-[:USES_TECH]->(:Skill)`
+
+This graph structure enables complex queries like:
+> "Find candidates who have inferred experience in 'Fintech' based on their work history at companies like Stripe or Plaid, even if 'Fintech' isn't on their resume."
