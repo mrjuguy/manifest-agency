@@ -73,6 +73,15 @@ function getTemplate(markdown, templateName) {
 }
 
 function main() {
+    if (!fs.existsSync(TARGET_LIST_PATH)) {
+        console.error(`Error: Target list not found at ${TARGET_LIST_PATH}`);
+        process.exit(1);
+    }
+    if (!fs.existsSync(TEMPLATES_PATH)) {
+        console.error(`Error: Templates not found at ${TEMPLATES_PATH}`);
+        process.exit(1);
+    }
+
     console.log(`Reading targets from ${TARGET_LIST_PATH}...`);
     const targetContent = fs.readFileSync(TARGET_LIST_PATH, 'utf8');
     const templateContent = fs.readFileSync(TEMPLATES_PATH, 'utf8');
@@ -99,7 +108,9 @@ function main() {
         emailBody = emailBody.replace(/\[PERSONALIZATION_HOOK\]/g, target.hook);
         emailBody = emailBody.replace(/\[CALENDLY LINK\]/g, 'https://calendly.com/manifest-automations/30min'); // Hardcoded based on doc
         
-        const filename = `${target.agency.replace(/\s+/g, '_')}_draft.txt`;
+        // Safer filename: alphanumeric only, lowercase
+        const safeAgency = target.agency.replace(/[^a-z0-9]/gi, '_').toLowerCase();
+        const filename = `${safeAgency}_draft.txt`;
         const filepath = path.join(OUTPUT_DIR, filename);
         
         const fullContent = `To: ${target.email}\nSubject: Quick question about ${target.agency}'s reporting\n\n${emailBody}`;

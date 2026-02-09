@@ -19,10 +19,26 @@ export default function Calculator() {
   const fiveYearCost = annualCost * 5;
   const annualSavings = annualCost * 0.8;
 
-  const handleDetailedReport = (e: React.FormEvent) => {
+  const handleDetailedReport = async (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real app, send to API/Zapier
-    console.log("Lead Captured:", email, { analysts, hourlyRate, hoursPerWeek, annualSavings });
+    try {
+      await fetch('/api/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email,
+          analysts,
+          hourlyRate,
+          hoursPerWeek,
+          annualSavings,
+          type: 'calculator-submission'
+        }),
+      });
+    } catch (err) {
+      console.error('Error submitting lead:', err);
+    }
+    // Still show success state even if API fails (graceful degradation) or maybe handle error UI?
+    // For now, simple behavior as requested.
     setIsSubmitted(true);
   };
 
@@ -47,10 +63,11 @@ export default function Calculator() {
             {/* Controls */}
             <div className="bg-slate-50 p-8 rounded-2xl border border-slate-200 space-y-8">
               <div>
-                <label className="block text-sm font-semibold text-slate-700 mb-2">
+                <label htmlFor="team-members" className="block text-sm font-semibold text-slate-700 mb-2">
                   Number of Team Members
                 </label>
                 <input 
+                  id="team-members"
                   type="range" 
                   min="1" 
                   max="50" 
@@ -64,10 +81,11 @@ export default function Calculator() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-slate-700 mb-2">
+                <label htmlFor="hourly-rate" className="block text-sm font-semibold text-slate-700 mb-2">
                   Average Hourly Cost (Fully Loaded)
                 </label>
                 <input 
+                  id="hourly-rate"
                   type="range" 
                   min="20" 
                   max="200" 
@@ -83,10 +101,11 @@ export default function Calculator() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-slate-700 mb-2">
+                <label htmlFor="hours-per-week" className="block text-sm font-semibold text-slate-700 mb-2">
                   Hours/Week on Data Entry & Reporting
                 </label>
                 <input 
+                  id="hours-per-week"
                   type="range" 
                   min="1" 
                   max="40" 

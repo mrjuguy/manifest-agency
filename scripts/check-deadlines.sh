@@ -14,6 +14,12 @@ if [ ! -f "$ACTIVE_PROJECTS_FILE" ]; then
   exit 0
 fi
 
+# Check for python3
+if ! command -v python3 &> /dev/null; then
+    echo "❌ Python 3 is required for date calculations."
+    exit 1
+fi
+
 echo "🔍 Scanning for deadlines in $ACTIVE_PROJECTS_FILE..."
 
 # Parse the markdown table
@@ -50,33 +56,41 @@ if [ -z "$UPCOMING_DEADLINES" ]; then
   exit 0
 fi
 
-# Send to Discord
-PAYLOAD=$(cat <<EOF
-{
-  "embeds": [
+# Send to Discord safely using Python for JSON construction
+# Using python ensures proper escaping of the payload
+python3 -c "
+import json
+import sys
+
+# Get the deadlines string from argument
+deadlines = sys.argv[1]
+
+payload = {
+  'embeds': [
     {
-      "title": "⏰ Looming Deadlines",
-      "description": "The following milestones are due soon:",
-      "color": 16729871,
-      "fields": [
+      'title': '⏰ Looming Deadlines',
+      'description': 'The following milestones are due soon:',
+      'color': 16729871,
+      'fields': [
         {
-          "name": "Deliverables",
-          "value": "${UPCOMING_DEADLINES}",
-          "inline": false
+          'name': 'Deliverables',
+          'value': deadlines,
+          'inline': False
         }
       ],
-      "footer": {
-        "text": "Manifest Automations • Accountability Bot"
+      'footer': {
+        'text': 'Manifest Automations • Accountability Bot'
       }
     }
   ]
 }
-EOF
-)
+print(json.dumps(payload))
+" "$UPCOMING_DEADLINES" > payload.json
 
 curl -H "Content-Type: application/json" \
      -X POST \
-     -d "$PAYLOAD" \
+     -d @payload.json \
      "$WEBHOOK_URL"
 
+rm payload.json
 echo "✅ Notification sent."

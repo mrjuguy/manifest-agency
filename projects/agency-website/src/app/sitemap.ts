@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { getSortedPostsData } from '../lib/posts';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://manifest.agency';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://manifest.agency';
   const posts = getSortedPostsData();
 
   const blogPosts = posts.map((post) => ({

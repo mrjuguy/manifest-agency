@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { config } from "@/config";
 
 export default function Footer() {
   return (
@@ -12,10 +13,10 @@ export default function Footer() {
           tell you. No sales pressure. Just engineering.
         </p>
         <a
-          href="mailto:hello@manifestautomations.com"
+          href={`mailto:${config.supportEmail}`}
           className="text-2xl font-bold text-blue-600 hover:underline"
         >
-          hello@manifestautomations.com
+          {config.supportEmail}
         </a>
         <div className="mt-12 text-slate-400 text-sm">
           <Link href="/blog" className="hover:text-blue-600 mr-4">
@@ -27,7 +28,7 @@ export default function Footer() {
           <Link href="/terms" className="hover:text-blue-600 mr-4">
             Terms of Service
           </Link>
-          © 2026 Manifest Automations. All rights reserved.
+          © 2026 {config.companyName}. All rights reserved.
         </div>
       </div>
     </footer>

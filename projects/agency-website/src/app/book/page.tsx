@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { config } from "@/config";
 
 export default function Book() {
   return (
@@ -34,7 +35,7 @@ export default function Book() {
             </ul>
             
             <a 
-              href="https://calendly.com/manifest-automations/30min"
+              href={config.calendlyUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-500/25"
@@ -47,7 +48,7 @@ export default function Book() {
           </div>
 
           <div className="text-slate-500 text-sm">
-            Prefer email? <a href="mailto:hello@manifestautomations.com" className="text-blue-600 hover:underline">hello@manifestautomations.com</a>
+            Prefer email? <a href={`mailto:${config.supportEmail}`} className="text-blue-600 hover:underline">{config.supportEmail}</a>
           </div>
         </div>
       </main>

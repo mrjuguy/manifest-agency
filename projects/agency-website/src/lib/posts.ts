@@ -4,7 +4,9 @@ import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
 
-const postsDirectory = path.join(process.cwd(), '../../content/blog');
+const postsDirectory = process.env.CONTENT_DIR 
+  ? path.resolve(process.env.CONTENT_DIR) 
+  : path.join(process.cwd(), '../../content/blog');
 
 export interface PostData {
   slug: string;
@@ -21,6 +23,7 @@ export interface PostData {
 export function getSortedPostsData(): PostData[] {
   // Check if directory exists
   if (!fs.existsSync(postsDirectory)) {
+    console.warn(`Content directory not found at: ${postsDirectory}`);
     return [];
   }
 
@@ -44,7 +47,11 @@ export function getSortedPostsData(): PostData[] {
   });
 
   // Filter out drafts if in production? Maybe not for now.
-  const publishedPosts = allPostsData.filter(post => post.status !== 'Draft' || process.env.NODE_ENV === 'development');
+  const publishedPosts = allPostsData.filter(post => {
+      // Allow explicit 'Ready' or allow all in development
+      if (process.env.NODE_ENV === 'development') return true;
+      return post.status === 'Ready';
+  });
 
   // Sort posts by date
   return publishedPosts.sort((a, b) => {

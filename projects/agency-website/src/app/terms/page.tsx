@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { config } from "@/config";
 
 export default function Terms() {
   return (
@@ -42,7 +43,7 @@ export default function Terms() {
 
           <h2>6. Contact</h2>
           <p>
-            Questions about these Terms? Contact us at <a href="mailto:hello@manifestautomations.com">hello@manifestautomations.com</a>.
+            Questions about these Terms? Contact us at <a href={`mailto:${config.supportEmail}`}>{config.supportEmail}</a>.
           </p>
         </div>
       </main>

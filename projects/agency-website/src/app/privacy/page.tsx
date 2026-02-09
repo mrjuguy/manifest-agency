@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { config } from "@/config";
 
 export default function Privacy() {
   return (
@@ -44,7 +45,7 @@ export default function Privacy() {
 
           <h2>5. Contact Us</h2>
           <p>
-            If you have any questions about this Privacy Policy, please contact us at: <a href="mailto:hello@manifestautomations.com">hello@manifestautomations.com</a>.
+            If you have any questions about this Privacy Policy, please contact us at: <a href={`mailto:${config.supportEmail}`}>{config.supportEmail}</a>.
           </p>
         </div>
       </main>
