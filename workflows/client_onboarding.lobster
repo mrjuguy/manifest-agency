@@ -13,12 +13,10 @@ steps:
 
   - id: scaffold
     command: ./scripts/scaffold-project.sh "${{args.clientName}}" "${{args.slug}}"
-    cwd: manifest-agency-repo
     description: "Generates directory structure, README, and Trust Ledger"
 
   - id: verify_scaffold
     command: ls -F projects/${{args.slug}}/
-    cwd: manifest-agency-repo
     description: "List generated files for review"
 
   - id: approve_structure
@@ -30,7 +28,6 @@ steps:
     command: |
       git add projects/${{args.slug}}
       git commit -m "feat: onboard client ${{args.clientName}}"
-    cwd: manifest-agency-repo
     condition: ${{steps.approve_structure.approved}}
 
   - id: approve_push
@@ -39,7 +36,6 @@ steps:
 
   - id: git_push
     command: git push origin main
-    cwd: manifest-agency-repo
     condition: ${{steps.approve_push.approved}}
 
   - id: create_channels

@@ -7,6 +7,7 @@ const nodemailer = require('nodemailer');
 const DRAFTS_DIR = path.join(__dirname, 'drafts');
 const SENT_DIR = path.join(__dirname, 'sent');
 const DRY_RUN = process.env.DRY_RUN !== 'false'; // Default to true for safety
+const BATCH_LIMIT = parseInt(process.env.BATCH_LIMIT || '5', 10);
 
 // Create sent directory if it doesn't exist
 if (!fs.existsSync(SENT_DIR)) {
@@ -44,7 +45,8 @@ function parseDraft(filePath) {
 
     // Extract body, removing internal notes if present
     const rawBody = lines.slice(bodyStartIndex).join('\n').trim();
-    const body = rawBody.split('\n---\nInternal Note:')[0].trim();
+    // Robust regex for splitting internal notes
+    const body = rawBody.split(/^---$/m)[0].trim();
 
     return { to, subject, body };
 }
@@ -52,26 +54,37 @@ function parseDraft(filePath) {
 async function main() {
     console.log(`🚀 Outreach Sender Starting...`);
     console.log(`Mode: ${DRY_RUN ? '🛑 DRY RUN (No emails will be sent)' : '✅ LIVE (Sending emails)'}`);
+    console.log(`Batch Limit: ${BATCH_LIMIT}`);
 
     if (!DRY_RUN && (!process.env.SMTP_HOST || !process.env.SMTP_USER)) {
         console.error('❌ Error: Missing SMTP configuration in .env');
         process.exit(1);
     }
 
-    const files = fs.readdirSync(DRAFTS_DIR).filter(f => f.endsWith('_draft.txt'));
+    let files = fs.readdirSync(DRAFTS_DIR).filter(f => f.endsWith('_draft.txt'));
     
     if (files.length === 0) {
         console.log('No drafts found.');
         return;
     }
 
-    console.log(`Found ${files.length} drafts.`);
+    // Apply batch limit
+    files = files.slice(0, BATCH_LIMIT);
+
+    console.log(`Processing ${files.length} drafts.`);
 
     for (const file of files) {
         const filePath = path.join(DRAFTS_DIR, file);
         const { to, subject, body } = parseDraft(filePath);
 
         console.log(`\n📄 Processing: ${file}`);
+        
+        // Validation
+        if (to.includes('TBD') || !subject) {
+            console.log(`   ⚠️  Skipping: Invalid 'To' (TBD) or missing Subject.`);
+            continue;
+        }
+
         console.log(`   To: ${to}`);
         console.log(`   Subject: ${subject}`);
 
