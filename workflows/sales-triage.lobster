@@ -19,6 +19,7 @@ steps:
   # 3. Generate Draft (LLM Step)
   # Uses the enrichment data to write a personalized message
   - id: generate_draft
+    # TODO: Implement safe variable passing
     command: clawd agent --task "Write a cold DM to ${{ enrich_lead.stdout.name }} mentioning their post about ${{ fetch_leads.stdout.topic }}."
 
   # 4. Human Approval Gate
@@ -30,4 +31,4 @@ steps:
   # 5. Send (only runs if approved)
   - id: send_message
     command: echo "Sending message..." # Placeholder for actual sending logic
-    condition: ${{ approval.approved }}
+    condition: ${{ steps.approval.approved }}

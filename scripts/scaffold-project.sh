@@ -30,11 +30,17 @@ echo "🏗️  Scaffolding '$PROJECT_NAME' into $TARGET_DIR..."
 cp -r "$TEMPLATE_DIR" "$TARGET_DIR"
 
 # 2. Replace Variables in Files
-# macOS/BSD sed requires '' after -i, Linux does not. We'll use a temp file approach or basic sed.
-# Assuming Linux/Git Bash environment based on previous commands.
+# macOS/BSD sed requires '' after -i, Linux does not. We use .bak for cross-platform compatibility.
 
-find "$TARGET_DIR" -type f -exec sed -i "s/{{PROJECT_NAME}}/$PROJECT_NAME/g" {} +
-find "$TARGET_DIR" -type f -exec sed -i "s/{{DATE}}/$(date +%Y-%m-%d)/g" {} +
+# Escape variables for sed (escape / and &)
+ESCAPED_PROJECT_NAME=$(echo "$PROJECT_NAME" | sed 's/[\/&]/\\&/g')
+DATE_STR=$(date +%Y-%m-%d)
+
+find "$TARGET_DIR" -type f -exec sed -i.bak "s/{{PROJECT_NAME}}/$ESCAPED_PROJECT_NAME/g" {} +
+find "$TARGET_DIR" -type f -exec sed -i.bak "s/{{DATE}}/$DATE_STR/g" {} +
+
+# Clean up backup files created by sed -i.bak
+find "$TARGET_DIR" -name "*.bak" -type f -delete
 
 # 3. Create Additional Directories (if not in template)
 mkdir -p "$TARGET_DIR/src"

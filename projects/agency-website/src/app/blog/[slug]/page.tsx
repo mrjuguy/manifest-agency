@@ -28,6 +28,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 }
 
 export default async function Post({ params }: { params: Promise<{ slug: string }> }) {
+  // params is a Promise in Next.js 15+
   const { slug } = await params;
   const postData = await getPostData(slug);
 

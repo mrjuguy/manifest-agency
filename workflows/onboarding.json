@@ -13,8 +13,7 @@
       "run": {
         "tool": "exec",
         "args": {
-          "command": "./scripts/scaffold-project.sh \"{{projectName}}\" \"{{slug}}\"",
-          "cwd": "manifest-agency-repo"
+          "command": "./scripts/scaffold-project.sh \"{{projectName}}\" \"{{slug}}\""
         }
       }
     },
@@ -25,8 +24,7 @@
       "run": {
         "tool": "exec",
         "args": {
-          "command": "test -f projects/{{slug}}/README.md && test -f projects/{{slug}}/.planning/trust-ledger.md",
-          "cwd": "manifest-agency-repo"
+          "command": "test -f projects/{{slug}}/README.md && test -f projects/{{slug}}/.planning/trust-ledger.md"
         }
       }
     },

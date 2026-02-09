@@ -26,10 +26,11 @@ UPCOMING_DEADLINES=""
 
 while IFS= read -r line; do
   # Skip headers and separators
-  if [[ "$line" =~ ^\|.*\|.*\|.*\|.*\|.*\|$ ]] && ! [[ "$line" =~ "---" ]] && ! [[ "$line" =~ "Project" ]]; then
+  # Regex allows any number of columns but ensures it's a table row
+  if [[ "$line" =~ ^\|.*\|$ ]] && ! [[ "$line" =~ "---" ]] && ! [[ "$line" =~ "Project" ]]; then
     
     PROJECT=$(echo "$line" | awk -F'|' '{print $2}' | xargs)
-    DEADLINE=$(echo "$line" | awk -F'|' '{print $5}' | xargs)
+    DEADLINE=$(echo "$line" | awk -F'|' '{print $6}' | xargs)
     
     if [ ! -z "$DEADLINE" ]; then
       # Check if deadline is within 7 days

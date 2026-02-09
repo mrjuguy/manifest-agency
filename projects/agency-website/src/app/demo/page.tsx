@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Navbar from "@/components/Navbar"; // Keep main navbar for the demo wrapper? Or make it full screen app?
 // Let's make it look like a full screen app but keep the wrapper so they can navigate back.
 
 export default function Demo() {
